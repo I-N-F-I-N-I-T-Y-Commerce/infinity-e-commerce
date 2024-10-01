@@ -1,0 +1,75 @@
+body {
+  background-color: #040410;
+  margin: 0;
+}
+
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+@font-face {
+  font-family: 'Boston Regular';
+  src: url('./font/boston/BostonRegular.otf');
+}
+
+@font-face {
+  font-family: 'Boston Bold';
+  src: url('./font/boston/BostonBold.otf');
+}
+
+@font-face {
+  font-family: 'Boston Light';
+  src: url('./font/boston/BostonLight.otf');
+}
+
+:root {
+  /* Max Width of containers */
+  --max-width: 1155px;
+  
+  /* fonts */
+  --font-boston-bold: 'Boston Bold' ,Montserrat, Helvetica, sans-serif ;
+  --font-boston-regular: 'Boston Regular', Montserrat, Helvetica, sans-serif;
+  --font-boston-light: 'Boston Light', Montserrat, Helvetica, sans-serif;
+  --font-abeezee: ABeeZee;
+
+  /* font sizes */
+  --font-size-6xl: 25px;
+  --font-size-xl: 20px;
+  --font-size-4xl: 23px;
+  --font-size-lg: 18px;
+  --font-size-11xl: 30px;
+  --font-size-5xl: 24px;
+  --font-size-mini: 15px;
+  --font-size-9xl: 28px;
+  --font-size-3xl: 22px;
+
+  /* Colors */
+  --color-gray-100: #222020;
+  --color-gray-200: #040410;
+  --color-sandybrown: #f6bc72;
+  --color-seashell-100: #fef9f4;
+  --color-seashell-200: rgba(254, 249, 244, 0.6);
+  --color-white: #fff;
+  --color-darkgray: #a19f9f;
+
+  /* Gaps */
+  --gap-base: 16px;
+  --gap-xl: 20px;
+
+  /* Paddings */
+  --padding-17xl: 36px;
+  --padding-smi: 13px;
+  --padding-12xs: 1px;
+  --padding-11xs: 2px;
+  --padding-10xs: 3px;
+  --padding-sm: 14px;
+  --padding-13xl: 32px;
+  --padding-xl: 20px;
+  --padding-7xs: 6px;
+
+  /* Border radiuses */
+  --br-mini: 15px;
+}
