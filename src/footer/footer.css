@@ -1,80 +1,47 @@
-.container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.main-container {
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    width: 1440px;
-    height: auto;
-    /* aspect-ratio: 16/9; */
-    font-size: 10px;
-    font-family: var(--font-montserrat);
-    color: var(--color-seashell-100);
-    background-color: var(--color-gray-200);
-    padding: 26px 36px 0;
-    gap: 22px;
+    gap: 50px;
 }
 
 .footer-container {
     justify-content: space-between;
     color: var(--color-seashell-100);
     display: flex;
-    position: relative;
     flex-direction: column;
     bottom: 0;
-    max-width: 100%;
+    width: 980px;
+    max-width: 1135px;
     font-size: 15px;
-    gap: 73px;
-}
-
-.information-footer,
-.terms-footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }
 
 
 .terms-footer {
-    border-top: 2px solid var(--color-gray-100);
-    padding: 31px 169px var(--padding-13xl) 148px;
-}
-
-.c {
+    width: 980px;
+    max-width: 1135px;
+    color: wheat;
     display: flex;
-    position: relative;
-    text-align: center;
-    justify-content: center;
     align-items: center;
-    font-weight: 600;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    color: rgba(82, 189, 158, 0.75);
-    border: 1px solid rgba(82, 189, 158, 0.75);
+    height: 70px;
+    gap: 250px;
 }
 
-.all-rights-reserved {
+.information-footer {
+    width: 980px;
+    max-width: 1135px;
     display: flex;
+    justify-content: center;
     flex-direction: row;
-    gap: 5px;
+    gap: 161px;
 }
 
-.cookie-policy-wrapper {
+
+.term-footer-container {
+    border-top: 2px solid var(--color-gray-100);
+    width: 100%;
     display: flex;
-    flex-direction: row;
-}
-
-.cookie-icon {
-    height: 20px;
-    width: 20px;
-    position: relative;
-    object-fit: cover;
-    min-height: 20px;
-    margin-left: 5px;
-    z-index: 1;
+    justify-content: center;
+    height: auto;
 }
 
 .for-more-updates {
@@ -87,16 +54,111 @@
 }
 
 .soc-med-icons {
-    width: 186px;
-    height: 30px;
-    position: relative;
+    height: 22px;
+    cursor: pointer;
 }
 
 .infinity-wrapper {
     display: flex;
     flex-direction: column;
-
-    flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    gap: 13px;
+    width: 190px;
+}
+
+.word-logo {
+    font-family: var(--font-boston-black);
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.updates {
+    font-family: var(--font-boston-light);
+    color: var(--color-darkgray);
+    margin: 0;
+    font-size: 1rem;
+}
+
+.resources {
+    font-family: var(--font-boston-bold);
+    margin-bottom: 6%;
+    font-size: 1.1rem;
+}
+
+.help {
+    font-family: var(--font-boston-bold);
+    margin-bottom: 10%;
+    font-size: 1.1rem;
+}
+
+.company {
+    font-family: var(--font-boston-bold);
+    margin-bottom: 10%;
+    font-size: 1.1rem;
+}
+
+.membership,
+.support-options,
+.company-info {
+    font-family: var(--font-boston-light);
+    color: var(--color-darkgray);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.resources-container,
+.membership,
+.help-parent,
+.support-options,
+.company-info,
+.company-container {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.legal,
+.infinity-inc-all,
+.cookie-policy {
+    font-family: var(--font-boston-light);
+    color: var(--color-seashell-100);
+    font-size: .7rem;
+    opacity: 60%;
+}
+
+.c {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    color: rgba(82, 189, 158, 0.75);
+    border: 1px solid rgba(82, 189, 158, 0.75);
+    font-size: .5rem;
+}
+
+
+.all-rights-reserved {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    font-family: var(--font-boston-light);
+}
+
+.cookie-policy-wrapper {
+    display: flex;
+    flex-direction: row;
+    font-family: var(--font-boston-light);
+    font-size: .7rem;
+    align-items: center;
+    gap: 9px;
+    
+}
+
+.cookie-icon {
+    height: 18px;
 }

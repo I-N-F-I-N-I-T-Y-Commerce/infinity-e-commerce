@@ -25,6 +25,16 @@ body {
   src: url('./font/boston/BostonLight.otf');
 }
 
+@font-face {
+  font-family: 'Boston Black';
+  src: url('./font/boston/BostonBlack.otf');
+}
+
+@font-face {
+  font-family: 'Boston SemiBold';
+  src: url('./font/boston/BostonSemiBold.otf');
+}
+
 :root {
   /* Max Width of containers */
   --max-width: 1155px;
@@ -33,6 +43,8 @@ body {
   --font-boston-bold: 'Boston Bold' ,Montserrat, Helvetica, sans-serif ;
   --font-boston-regular: 'Boston Regular', Montserrat, Helvetica, sans-serif;
   --font-boston-light: 'Boston Light', Montserrat, Helvetica, sans-serif;
+  --font-boston-black: 'Boston Black', Montserrat, Helvetica, sans-serif;
+  --font-boston-semibold: 'Boston SemiBold', Montserrat, Helvetica, sans-serif;
   --font-abeezee: ABeeZee;
 
   /* font sizes */
