@@ -3,6 +3,10 @@ body {
   margin: 0;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .main-container {
   display: flex;
   align-items: center;
