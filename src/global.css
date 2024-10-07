@@ -39,6 +39,11 @@ body {
   src: url('./font/boston/BostonSemiBold.otf');
 }
 
+@font-face {
+  font-family: 'Boston Extra Light';
+  src: url('./font/boston/BostonExtraLight.otf');
+}
+
 :root {
   /* Max Width of containers */
   --max-width: 1155px;
@@ -49,6 +54,7 @@ body {
   --font-boston-light: 'Boston Light', Montserrat, Helvetica, sans-serif;
   --font-boston-black: 'Boston Black', Montserrat, Helvetica, sans-serif;
   --font-boston-semibold: 'Boston SemiBold', Montserrat, Helvetica, sans-serif;
+  --font-boston-extra-light: 'Boston Extra Light', Montserrat, Helvetica, sans-serif;
   --font-abeezee: ABeeZee;
 
   /* font sizes */

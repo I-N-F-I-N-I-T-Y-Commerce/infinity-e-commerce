@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="./authentication.css">
+</head>
+<body>
+    
+    <div class="sign-up-form-container">
+        <div class="form-container sign-up" id="sign-up-form">
+
+            <h1>Sign Up for your Account.</h1>
+            <h3>Already have an account? <a href="./account-sign-in.html" class="highlight1">Sign In</a></h3>
+    
+            <!-- * Put the php file here in ` action ` attribute -->
+            <form action="">
+                <div class="terms-image-container">
+                    <img src="../src/public/IMG-TERMS-0001.png" alt="">
+                    <div class="circle-shoe-highlight1"></div>
+                    <div class="circle-shoe-highlight2"></div>
+                </div>  
+                <label for="submit" id="terms-conditions">
+                    To Proceed, please accept our <span class="highlight-terms"> Terms and Conditions. </span><br>
+
+                    <br>
+                    Its Important that you read and understand then before continuing to buy our Products
+                </label>
+
+                <!-- <p id="notify-confirm-password">OwO</p> -->
+                <input type="submit" value="Submit" name="submit">
+            </form>
+
+            <hr>
+
+            <div class="progress-bar">
+                <div class="checkpoint1 done"></div>
+                <hr class="done-progress">
+                <p id="personal" class="done-on-step">Personal</p>
+
+                <div class="checkpoint2 done"></div>
+                <hr class="done-progress">
+                <p id="account" class="done-on-step">Account</p>
+
+                <div class="checkpoint3 on-progress"></div>
+                <p id="submit" class="on-progress-step">Submit</p>
+            </div>
+           
+        </div>
+        <div class="image-banner">
+            <img src="../public/IMG-BANNER-SIGNIN-0001.jpg" alt="">
+            <div class="logo-name-container">
+                <h1>INFINITY</h1>
+                <div class="third-circle"></div>
+            </div>
+            <h1 class="tagline">DREAM</h1>
+            <h3>IN STEPS</h3>
+        </div>
+
+        <script src="./authentication.js"></script>
+    </div>
+</body>
+</html>
