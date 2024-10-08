@@ -1,0 +1,15 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+main .main-container {
+    height: auto;
+    margin-top: 3%;
+    margin-bottom: 5%;
+    max-width: 1135px;
+    width: 100%;
+    gap: 0px;
+}
