@@ -44,6 +44,16 @@ body {
   src: url('./font/boston/BostonExtraLight.otf');
 }
 
+@font-face {
+  font-family: 'Boston Extra Light Italic';
+  src: url('../src/font/boston/BostonExtraLightIt.otf');
+}
+
+@font-face {
+  font-family: 'Boston Regular Italic';
+  src: url('../src/font/boston/BostonRegularIt.otf');
+}
+
 :root {
   /* Max Width of containers */
   --max-width: 1155px;
@@ -51,10 +61,12 @@ body {
   /* fonts */
   --font-boston-bold: 'Boston Bold' ,Montserrat, Helvetica, sans-serif ;
   --font-boston-regular: 'Boston Regular', Montserrat, Helvetica, sans-serif;
+  --font-boston-regular-italic:'Boston Regular Italic', Helvetica, sans-serif;
   --font-boston-light: 'Boston Light', Montserrat, Helvetica, sans-serif;
   --font-boston-black: 'Boston Black', Montserrat, Helvetica, sans-serif;
   --font-boston-semibold: 'Boston SemiBold', Montserrat, Helvetica, sans-serif;
   --font-boston-extra-light: 'Boston Extra Light', Montserrat, Helvetica, sans-serif;
+  --font-boston-extra-light-italic: 'Boston Extra Light Italic', Montserrat, Helvetica, sans-serif;
   --font-abeezee: ABeeZee;
 
   /* font sizes */
@@ -77,6 +89,9 @@ body {
   --color-white: #fff;
   --color-darkgray: #a19f9f;
 
+  /* Max Width */
+  --max-width: 1135px;
+  
   /* Gaps */
   --gap-base: 16px;
   --gap-xl: 20px;
