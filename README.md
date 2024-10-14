@@ -1,2 +1,18 @@
-# E-Commerce site
-This is a ongoing website for our fictional company ` I N F I N I T Y ` 
+<h1 align="center"> I N F I N I T Y </h1>
+<p align="center">This is an ongoing website for our fictional company I N F I N I T Y ✨</p> 
+
+<hr>
+
+## Changelogs <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Milky%20Way.png" alt="Milky Way" width="30" height="30"  align="center"/>
+* ✅ Fix Template ` undefined file errors `
+* ⬆️ Added Home Page File
+* ⬆️ Added New Public Assets
+
+` ♻️ Note: if you see any bugs or errors, feel free to post them on the issue for a resolution on the top of this repository `
+
+## On Going <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Cloud%20with%20Lightning%20and%20Rain.png" alt="Cloud with Lightning and Rain" width="30" height="30" align="center" />
+
+* :construction: ` Home Page In Polish `
+* :construction: ` Product Section w/ Search Page ( On Construction ) `
+* :construction: ` Account Page ( In Polish ) `
+* 🎨 ` Re-Designing Product Overview Page `
