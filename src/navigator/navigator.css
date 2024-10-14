@@ -1,7 +1,6 @@
 .navigation-container {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     box-sizing: border-box;
     width: 100%;
@@ -9,6 +8,22 @@
     font-family: var(--font-boston-regular);
     background-color: var(--color-gray-200);
     gap: 20px;
+    height: auto;
+    margin-bottom: .5%;
+}
+
+.navigational-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-boston-regular);
+    background-color: var(--color-gray-200);
+    position: sticky;
+    top: 0; /* Sticks the navigator to the top of the viewport */
+    z-index: 1000; /* Ensures it stays above other elements */
+    box-shadow: 0 30px 30px rgba(0, 0, 0, 0.1); /* Optional: a slight shadow to differentiate from the rest of the page */
 }
 
 .header {
@@ -20,6 +35,22 @@
     flex-direction: row;
     box-sizing: border-box;
     justify-content: space-between;
+}
+
+.header a {
+    text-decoration: none;
+}
+
+.account-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 200px;
+}
+
+.account-container img {
+    width: 25px;
 }
 
 .branding {
@@ -67,11 +98,11 @@
 
 .navigator {
     display: flex;
-    position: relative;
     align-items: center;
     justify-content: space-between;
-    max-width: 1165px;
+    max-width: 1135px;
     width: 100%;
+    height: 85px;
     gap: 0;
 }
 

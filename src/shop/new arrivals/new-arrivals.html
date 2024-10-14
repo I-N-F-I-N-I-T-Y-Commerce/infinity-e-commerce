@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my-orders</title>
-    <link rel="stylesheet" href="../../footer/footer.css" />
-    <link rel="stylesheet" href="../../navigator/navigator.css" />
-    <link rel="stylesheet" href="../../global.css" />
-    <link rel="stylesheet" href="../account.css" />
+    <title>New Arrivls</title>
+    <link rel="stylesheet" href="../products-page.css">
+    <link rel="stylesheet" href="../../global.css">
+    <link rel="stylesheet" href="../../navigator/navigator.css">
+    <link rel="stylesheet" href="../../footer/footer.css">
 </head>
+
 <body>
+
     <!-- * navigation -->
     <nav class="main-container">
         <div class="navigation-container">
@@ -22,17 +25,24 @@
                         <b class="tag-name">I N F I N I T Y</b>
                     </div>
                 </a>
+                <a href="../../authentication/account-sign-up.html">
+                    <div class="account-container">
+                        <!-- * NOTE If user is login already this signup will exchange to his/her username -->
+                        <div class="sign-up">Sign Up</div>
+                        <img src="../../public/Account.png" alt="">
+                    </div>
+                </a>
             </header>
         </div>
     </nav>
     <div class="navigational-container">
         <div class="navigator">
             <ul class="list-categories">
-                <li><a href="../../shop/new arrivals/new-arrivals.html">New & Featured</a></li>
-                <li><a href="../../shop/women/women-footwear.html">Women</a></li>
-                <li><a href="../../shop/men/men-footwear.html">Men</a></li>
-                <li><a href="../../shop/kids/kids-footwear.html">Kids</a></li>
-                <li><a href="../../shop/sale/sale-footwear.html">Sale</a></li>
+                <li><a href="../new arrivals/new-arrivals.html">New & Featured</a></li>
+                <li><a href="../women/women-footwear.html">Women</a></li>
+                <li><a href="../men/men-footwear.html">Men</a></li>
+                <li><a href="../kids/kids-footwear.html">Kids</a></li>
+                <li><a href="../sale/sale-footwear.html">Sale</a></li>
             </ul>
     
             <div class="search-bar">
@@ -46,67 +56,37 @@
         </div>
     </div>
     <!-- * navigation -->
+    
 
-
-
+    <!-- * Main Container -->
     <main>
         <div class="main-container">
-            <div class="user-profile-acc-container">
+            <div class="category-welcome">
+                <h1>New <span class="highlight2">Arrival's</span></h1>
+                <center><p>From  <span class="highlight2">Aesthetic</span> to new releases, our most-popular shoes and clothing styles are <span class="highlight1">ready to shop.</span></p></center>
+            </div>
 
-                <div class="account-container">
-                    <!-- TODO Account Navigation Container -->
-                    <div class="account-nav-container">
-                        <!-- * profile and username -->
-                        <div class="profile-container">
-                            <div class="account-profile-container">
-                                <img src="../../public/user-profile/Example User Profile.jpg" alt="">
-                            </div>
-                            <div class="account-username">John Paul-Bodino</div>
-                        </div>
-                        
-                        <!-- * navigation box -->
-                        <div class="ma-nav-btn-container">
+            <div class="results-container">
+                <div class="num-results">
+                    <p>3 <span class="highlight2">Results</span></p>
+                </div>
 
-                            <div class="navigation-btn not-current" id="my-account">
-                                <a href="../my-account/index.html" class="ma-account-btn not-current">
-                                    <img src="../../public/user-profile/account.png" alt="" id="my-account-btn">
-                                    <p>My Account</p>
-                                </a>
-                            </div>
-                            <div class="navigation-btn not-current" id="my-orders">
-                                <a href="../my-order/index.html" class="ma-orders-btn not-current">                                    
-                                    <img src="../../public/user-profile/orders.png" alt="" id="my-orders-btn">
-                                    <p>My Orders</p>
-                                </a>
-                            </div>
-                            <div class="navigation-btn current" id="my-wishlist">
-                                <a href="" class="ma-wishlist-btn current">                                    
-                                    <img src="../../public/user-profile/wishlist-b.png" alt="" id="my-wishlist-btn">
-                                    <p>My WishList</p>
-                                </a>
-                            </div>
-                            <div class="navigation-btn not-current" id="my-inbox">
-                                <a href="../my-inbox/index.html" class="ma-inbox-btn not-current">                                    
-                                    <img src="../../public/user-profile/inbox.png" alt="" id="my-inbox-btn">
-                                    <p>My Inbox</p>
-                                </a>
-                            </div>
-                        </div>
-                        <script src="../account.js"></script>
-                    </div>
-    
-                    <div id="myWishlist"  class="wishlist-container">
-                        <h1 class="wl-acc-status"><span>You have 0 Favourites, </span> John Paul-Bodino</h1>
-                        <div class="wl-box">
-                            <div class="favorite-container">
-
-                            </div>
-                        </div>
-                    </div>
+                <div class="dropdown-results">
+                    <p>Sort By: <span class="highlight2">Position</span></p>
+                    <img src="../../public/downward-arrow.png" alt="">
                 </div>
             </div>
+
+            <!-- TODO: Main Product Display | Use PHP for displaying product cards in each using for loop -->
+            <div class="product-display">
+                <div class="product-card"></div>
+                <div class="product-card"></div>
+                <div class="product-card"></div>
+            </div>
+            <!-- TODO: Main Product Display  -->
         </div>
     </main>
+    <!-- * Main Container -->
 
 
     <!-- * footer -->
@@ -119,7 +99,10 @@
                 <div class="infinity-wrapper">
                     <div class="word-logo">I N F I N I T Y</div>
                     <div class="updates">
-                            For more Updates you can check our Social Media Pages for latest Events
+                        <span>
+                            For more Updates you can check our Social Media Pages for latest
+                            Events
+                        </span>
                     </div>
                     <img class="soc-med-icons" loading="lazy" alt="" src="../../public/soc-med-pages.svg" />
                 </div>
@@ -195,6 +178,6 @@
     
     <!-- * footer -->
 
-
 </body>
+
 </html>
