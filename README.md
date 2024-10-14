@@ -4,9 +4,8 @@
 <hr>
 
 ## Changelogs <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Milky%20Way.png" alt="Milky Way" width="30" height="30"  align="center"/>
-* ✅ Fix Template ` undefined file errors `
-* ⬆️ Added Home Page File
-* ⬆️ Added New Public Assets
+* ⬆️ Added Account Page
+* ⬆️ Added New Public User-profile Assets
 
 ` ♻️ Note: if you see any bugs or errors, feel free to post them on the issue for a resolution on the top of this repository `
 
