@@ -1,0 +1,43 @@
+.wishlist-container {
+    height: 600px;
+    width: 765px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+
+
+
+}
+
+.wl-acc-status {
+    font-size: 35px;
+    color: white;
+
+
+
+
+}
+
+span {
+    color: #F6BC72;
+
+}
+
+.wl-box {
+    height: 500px;
+    width: 735px;
+    border-radius: var(--br-mini);
+    border: 5px solid #6CFACD;
+    display: flex;
+    justify-content: center;
+    
+    
+}
+
+
+
+
+
+
+

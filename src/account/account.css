@@ -1,0 +1,426 @@
+
+.user-profile-acc-container {
+    width: var(--max-width);
+    height: auto;
+    position: relative;
+    font-family: var(--font-boston-ex)
+}
+
+.account-container {
+    width: 100%;
+    max-width: 1135px;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    column-gap: 110px;
+}
+
+/* * Navigation Container */
+.account-nav-container {
+    height: 600px;
+    width: 260px;
+    border: 1px solid #1E1E23;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+/* * Username and Profile picture container */
+.profile-container {
+    height: 250px;
+    width: 260px;
+    border-bottom: 1px solid #1E1E23;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.account-profile-container {
+    width: 125px;
+    height: 125px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-top: 13%;
+}
+
+.account-profile-container img {
+    width: 125px;
+    height: 125px;
+}
+
+.account-username {
+    font-size: 1.1rem;
+    color: #FEF9F4;
+    font-family: var(--font-boston-regular);
+}
+
+/* * Navigation Account */
+.ma-nav-btn-container {
+    height: 350px;
+    width: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 40px;
+}
+
+/* * Styling for the Anchor Links */
+.ma-nav-btn-container a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    column-gap: 10px;
+    height: 35px;
+    width: 160px;
+    text-decoration: none;
+    font-family: var(--font-boston-light);
+    font-size: .9rem;
+}
+
+.navigation-btn {
+    width: 110px;
+}
+
+/* Icon styling */
+.ma-nav-btn-container img {
+    display: inline;
+    width: 25px; /* Adjust size to match the icon in your image */
+    height: 25px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.navigation-btn .current {
+    color: aquamarine;
+}
+
+.navigation-btn .not-current {
+    color: #FEF9F4;
+}
+
+.navigation-btn:hover .not-current {
+    color: aquamarine;
+}
+
+/* TODO My-Account Info Section Container */
+.account-info-container {
+    height: 600px;
+    width: 770px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.notify-user {
+    color: white;
+    height: 45px;
+    width: 770px;
+    display: flex;
+    align-items: center;
+    font-family: var(--font-boston-regular);
+}
+
+.notify-user h1 {
+    width: 700px;
+    font-family: var(--font-boston-extra-light);
+}
+
+.highlight1 {
+    color: #F6BC72;
+    margin-right: 2%;
+}
+
+.contact-info-container {
+    height: 250px;
+    width: 735px;
+    border-radius: 8px;
+    border: 1px solid #6CFACD;
+    margin-bottom: 3.6%;
+}
+
+/* * inside of the Contact Information container */
+.contact-info-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 0px;
+    margin-left: 30px;
+}
+
+.contact-info {
+    font-size: 20px;
+    color: white;
+    font-family: var(--font-boston-semibold);
+}
+
+.ci-details {
+    font-size: 1.1rem;
+    color: white;
+    font-family: var(--font-boston-extra-light);
+}
+
+.contact-info-btns {
+    font-family: var(--font-boston-extra-light);
+    display: flex;
+    flex-direction: row;
+    column-gap: 50px;
+    margin-top: 8%;
+}
+
+.edit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 1px solid #6CFACD;
+    box-shadow: 0 0 0px 0px #6CFACD;
+    width: 70px;
+    height: 35px;
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.changepwd-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 1px solid #F6BC72;
+    width: 150px;
+    height: 35px;
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+
+.address-book-container {
+    height: 250px;
+    width: 735px;
+    border-radius: 8px;
+    border: 1px solid #6CFACD;
+}
+
+/* * inside of the Address Book container */
+
+.address-book-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 0px;
+    margin-left: 30px;
+}
+
+.address-book {
+    font-family: var(--font-boston-semibold);
+    font-size: 20px;
+    color: white;
+}
+
+.ab-details {
+    font-family: var(--font-boston-regular);
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 7%;
+}
+
+.sa-stats {
+    font-family: var(--font-boston-light);
+    font-size: 1rem;
+    color: #6CFACD;
+    margin-top: -20px;
+}
+
+.ab-info-btns {
+    display: flex;
+    margin-top: 3%;
+}
+
+/* TODO My-Inbox Section Container */
+.inbox-container {
+    height: 600px;
+    width: 765px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.mi-acc-status {
+    font-size: 2rem;
+    color: white;
+    height: 45px;
+    width: 700px;
+    display: flex;
+    align-items: center;
+    font-family: var(--font-boston-extra-light);
+}
+
+
+span {
+    color: #F6BC72;
+}
+
+.mi-message-box {
+    height: 500px;
+    width: 735px;
+    border-radius: var(--br-mini);
+    border: 1px solid #6CFACD;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.message-container {
+    width: 700px;
+    height: auto;
+    border: 1px solid #6CFACD;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-shrink: 0;
+    column-gap: 25px;
+}
+
+/* TODO My-Orders Section Container */
+
+.order-container-container {
+    height: 600px;
+    width: 765px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.mo-acc-status {
+    font-size: 2rem;
+    color: #FEF9F4;
+    height: 45px;
+    width: 700px;
+    display: flex;
+    align-items: center;
+    font-family: var(--font-boston-extra-light);
+}
+
+span {
+    color: #F6BC72;
+}
+
+.mo-message-box {
+    height: 500px;
+    width: 735px;
+    border-radius: var(--br-mini);
+    border: 1px solid #6CFACD;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+
+.order-product-container {
+    width: 700px;
+    height: 150px;
+    border: 1px solid #6CFACD;
+    margin-top: 6%;
+    margin-bottom: 5%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 25px;
+    flex-shrink: 0;
+    scroll-behavior: smooth;
+}
+
+.order-product-pic img{
+    width: 85px;
+    height: 85px;
+    border-radius: 5px;
+    margin-left: 35px;
+}
+
+.order-product-status {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 15px;
+    margin-left: 1px;
+}
+
+.order-product-status img {
+    width: 35px;
+    height: 35px;
+}
+
+.order-product-status p {
+    font-family: var(--font-boston-extra-light);
+    font-size: 20px;
+    color: #F6BC72;
+}
+
+
+.order-product-name {
+    font-size: 20px;
+    color: white;
+    font-family: var(--font-boston-light);
+    max-width: 375px;
+    width: 375px;
+}
+
+/* TODO My-Wishlist Section Container */
+
+.wishlist-container {
+    height: 600px;
+    width: 765px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.wl-acc-status {
+    font-size: 2rem;
+    color: #FEF9F4;
+    height: 45px;
+    width: 700px;
+    display: flex;
+    align-items: center;
+    font-family: var(--font-boston-extra-light);
+}
+
+span {
+    color: #F6BC72;
+}
+
+.wl-box {
+    height: 500px;
+    width: 735px;
+    border-radius: var(--br-mini);
+    border: 1px solid #6CFACD;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
