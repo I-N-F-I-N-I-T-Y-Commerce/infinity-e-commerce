@@ -130,7 +130,8 @@
     text-wrap: nowrap;
 }
 
-.search-bar {
+.search-bar,
+.search-bar form {
     height: 45px;
     display: flex;
     position: relative;
@@ -164,13 +165,15 @@
 }
 
 
-#search-btn {
+#search-btn img{
     width: 19px;
+    cursor: pointer;
 }
 
 
-#favorite-btn,
-#cart-btn {
+#favorite-btn img,
+#cart-btn img{
+    cursor: pointer;
     width: 21px;
 }
 

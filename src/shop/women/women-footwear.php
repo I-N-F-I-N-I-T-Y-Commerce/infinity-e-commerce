@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Women's</title>
+    <title>INFINITY 👟 Women's</title>
+    <link rel="icon" href="../../public/logo_removebg_preview_q2J_icon.ico" sizes="16x16" type="image/x-icon">
     <link rel="stylesheet" href="../products-page.css">
     <link rel="stylesheet" href="../../global.css">
     <link rel="stylesheet" href="../../navigator/navigator.css">
@@ -35,20 +36,28 @@
     <div class="navigational-container">
         <div class="navigator">
             <ul class="list-categories">
-                <li><a href="../new arrivals/new-arrivals.html">New & Featured</a></li>
-                <li><a href="../women/women-footwear.html">Women</a></li>
-                <li><a href="../men/men-footwear.html">Men</a></li>
-                <li><a href="../kids/kids-footwear.html">Kids</a></li>
-                <li><a href="../sale/sale-footwear.html">Sale</a></li>
+                <li><a href="../new arrivals/new-arrivals.php">New & Featured</a></li>
+                <li><a href="../women/women-footwear.php">Women</a></li>
+                <li><a href="../men/men-footwear.php">Men</a></li>
+                <li><a href="../kids/kids-footwear.php">Kids</a></li>
+                <li><a href="../sale/sale-footwear.php">Sale</a></li>
             </ul>
     
             <div class="search-bar">
-                <input class="inp-search" type="text" placeholder="Search">
-                <div class="image-container">
-                    <img id="search-btn" src="../../public/loupe-1@2x.png" alt="icon">
-                    <img id="favorite-btn" src="../../public/heart-1-1@2x.png" alt="icon">
-                    <img id="cart-btn" src="../../public/market-1@2x.png" alt="icon">
-                </div>
+                <form action="your_search_endpoint.php" method="GET"> <!-- Change the action to your search handling URL -->
+                    <input class="inp-search" type="text" name="search" placeholder="Search" required> <!-- Add name attribute for form submission -->
+                    <div class="image-container">
+                        <button type="submit" id="search-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                            <img src="../../public/loupe-1@2x.png" alt="Search icon">
+                        </button>
+                        <button type="button" id="favorite-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                            <img src="../../public/heart-1-1@2x.png" alt="Favorite icon">
+                        </button>
+                        <button type="button" id="cart-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                            <img src="../../public/market-1@2x.png" alt="Cart icon">
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

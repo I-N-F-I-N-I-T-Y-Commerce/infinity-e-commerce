@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my-inbox</title>
+    <title>INFINITY 👟 Account Inbox</title>
+    <link rel="icon" href="../../public/logo_removebg_preview_q2J_icon.ico" sizes="16x16" type="image/x-icon">
     <link rel="stylesheet" href="../../footer/footer.css" />
     <link rel="stylesheet" href="../../navigator/navigator.css" />
     <link rel="stylesheet" href="../../global.css" />
@@ -36,12 +37,20 @@
             </ul>
     
             <div class="search-bar">
-                <input class="inp-search" type="text" placeholder="Search">
-                <div class="image-container">
-                    <img id="search-btn" src="../../public/loupe-1@2x.png" alt="icon">
-                    <img id="favorite-btn" src="../../public/heart-1-1@2x.png" alt="icon">
-                    <img id="cart-btn" src="../../public/market-1@2x.png" alt="icon">
-                </div>
+                <form action="your_search_endpoint.php" method="GET"> <!-- Change the action to your search handling URL -->
+                    <input class="inp-search" type="text" name="search" placeholder="Search" required> <!-- Add name attribute for form submission -->
+                    <div class="image-container">
+                        <button type="submit" id="search-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                            <img src="../../public/loupe-1@2x.png" alt="Search icon">
+                        </button>
+                        <button type="button" id="favorite-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                            <img src="../../public/heart-1-1@2x.png" alt="Favorite icon">
+                        </button>
+                        <button type="button" id="cart-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                            <img src="../../public/market-1@2x.png" alt="Cart icon">
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

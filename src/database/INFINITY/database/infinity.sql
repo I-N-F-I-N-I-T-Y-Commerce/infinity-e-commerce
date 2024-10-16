@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2024 at 10:29 AM
+-- Generation Time: Oct 15, 2024 at 01:27 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -103,12 +103,16 @@ CREATE TABLE `order` (
 CREATE TABLE `product` (
   `product_id` int(6) NOT NULL,
   `shoe_name` varchar(20) NOT NULL,
-  `shoe_image` varchar(75) NOT NULL,
-  `shoe_brand` varchar(25) NOT NULL,
+  `shoe_image` varchar(255) NOT NULL,
+  `shoe_brand` varchar(50) NOT NULL,
   `shoe_detail` varchar(225) NOT NULL,
   `quantity` int(2) NOT NULL,
   `category` set('Women','Men','Kids','') NOT NULL,
-  `shoe_price` decimal(10,2) NOT NULL
+  `shoe_price` decimal(10,2) NOT NULL,
+  `is_on_sale` tinyint(1) NOT NULL,
+  `is_limited` tinyint(1) NOT NULL,
+  `expiry_date` date NOT NULL,
+  `posted_date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

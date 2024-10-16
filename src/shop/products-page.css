@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 main {
     display: flex;
     justify-content: center;
@@ -36,6 +40,7 @@ main .main-container {
     font-family: var(--font-boston-light);
     font-size: 1.1rem;
     width: 540px;
+    text-align: center;
 }
 
 .results-container {
@@ -92,9 +97,125 @@ main .main-container {
     gap: 70px 60px;
 }
 
+/* * Product Card Design */
 .product-card {
     height: 300px;
     background-color: #1E1E23;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.5s ease; 
+    will-change: transform;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: scale(1.1);
+}
+
+.shoe-image-container img {
+    width: 338px;
+    height: 300px;
+    transform: translateY(-65px);
+}
+
+.shoe-price-name-detail-container {
+    background-color: #1E1E23;
+    height: 90px;
+    width: 340px;
+    position: absolute;
+    bottom: 0;
+}
+.shoe-name-container {
+    font-family: var(--font-boston-extra-light);
+    color: #FEF9F4;
+    height: 40px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 320px;
+}
+
+.shoe-name-container span {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.price-status-container {
+    font-family: var(--font-boston-light);
+    
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.price-status-container .shoe-price-container {
+    margin-left: 20px;
+}
+
+.shoe-price-container span {
+    color: #F6BC72;
+    font-size: 1.2rem;
+}
+
+.price-status-container .new,
+.price-status-container .limited,
+.price-status-container .none {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    right: 2px;
+    height: 28px;
+    width: auto;
+    border-radius: 8px 0 0 8px;
+}
+
+.price-status-container .new {
+    color: #5EC30E;
+    border: 1px solid #5EC30E;
+}
+
+.price-status-container .limited {
+    color: #F3980E;
+    border: 1px solid #F3980E;
+}
+
+.price-status-container .none {
+    display: none;
+}
+
+.shoe-status span {
+    font-size: .85rem;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.add-to-cart-container {
+    width: 339px;
+    top: 150px;
+    position: absolute;
+    background-color: rgb(4, 4, 16, .58);
+    height: 60px;
+    display: flex;
+}
+
+.add-to-cart-container img {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+   
+}
+
+.add-to-cart-container #wishlist {
+    right: 20px;
+    bottom: -45px;
+}
+
+.add-to-cart-container #add-to-cart {
+    right: 59px;
+    bottom: -44px;
 }
 
 .highlight1 {

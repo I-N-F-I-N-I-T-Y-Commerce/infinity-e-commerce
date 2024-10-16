@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kid's</title>
+    <title>New Arrivls</title>
+    <link rel="icon" href="../../public/logo_removebg_preview_q2J_icon.ico" sizes="16x16" type="image/x-icon">
     <link rel="stylesheet" href="../products-page.css">
     <link rel="stylesheet" href="../../global.css">
     <link rel="stylesheet" href="../../navigator/navigator.css">
@@ -12,7 +13,6 @@
 </head>
 
 <body>
-
     <!-- * navigation -->
     <nav class="main-container">
         <div class="navigation-container">
@@ -38,20 +38,28 @@
     <div class="navigational-container">
         <div class="navigator">
             <ul class="list-categories">
-                <li><a href="../new arrivals/new-arrivals.html">New & Featured</a></li>
-                <li><a href="../women/women-footwear.html">Women</a></li>
-                <li><a href="../men/men-footwear.html">Men</a></li>
-                <li><a href="../kids/kids-footwear.html">Kids</a></li>
-                <li><a href="../sale/sale-footwear.html">Sale</a></li>
+                <li><a href="../new arrivals/new-arrivals.php">New & Featured</a></li>
+                <li><a href="../women/women-footwear.php">Women</a></li>
+                <li><a href="../men/men-footwear.php">Men</a></li>
+                <li><a href="../kids/kids-footwear.php">Kids</a></li>
+                <li><a href="../sale/sale-footwear.php">Sale</a></li>
             </ul>
     
             <div class="search-bar">
-                <input class="inp-search" type="text" placeholder="Search">
-                <div class="image-container">
-                    <img id="search-btn" src="../../public/loupe-1@2x.png" alt="icon">
-                    <img id="favorite-btn" src="../../public/heart-1-1@2x.png" alt="icon">
-                    <img id="cart-btn" src="../../public/market-1@2x.png" alt="icon">
-                </div>
+                <form action="your_search_endpoint.php" method="GET"> <!-- Change the action to your search handling URL -->
+                    <input class="inp-search" type="text" name="search" placeholder="Search" required> <!-- Add name attribute for form submission -->
+                    <div class="image-container">
+                        <button type="submit" id="search-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                            <img src="../../public/loupe-1@2x.png" alt="Search icon">
+                        </button>
+                        <button type="button" id="favorite-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                            <img src="../../public/heart-1-1@2x.png" alt="Favorite icon">
+                        </button>
+                        <button type="button" id="cart-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                            <img src="../../public/market-1@2x.png" alt="Cart icon">
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -62,13 +70,13 @@
     <main>
         <div class="main-container">
             <div class="category-welcome">
-                <h1>Kid's <span class="highlight1">Shoes</span></h1>
-                <center><p>From  <span class="highlight2">Aesthetic</span> to new releases, our most-popular shoes and clothing styles are <span class="highlight1">ready to shop.</span></p></center>
+                <h1><span class="highlight2">Search</span></h1>
+                <center><p>From  <span class="highlight2">Aesthetic</span> to new searches, our most-popular shoes and clothing styles are <span class="highlight1">ready to shop and find.</span></p></center>
             </div>
 
             <div class="results-container">
                 <div class="num-results">
-                    <p>7 <span class="highlight2">Results</span></p>
+                    <p>3 <span class="highlight2">Results</span></p>
                 </div>
 
                 <div class="dropdown-results">
@@ -79,10 +87,6 @@
 
             <!-- TODO: Main Product Display | Use PHP for displaying product cards in each using for loop -->
             <div class="product-display">
-                <div class="product-card"></div>
-                <div class="product-card"></div>
-                <div class="product-card"></div>
-                <div class="product-card"></div>
                 <div class="product-card"></div>
                 <div class="product-card"></div>
                 <div class="product-card"></div>
