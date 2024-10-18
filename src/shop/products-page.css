@@ -103,14 +103,15 @@ main .main-container {
     background-color: #1E1E23;
     overflow: hidden;
     position: relative;
-    transition: transform 0.5s ease; 
-    will-change: transform;
+    /* transition: transform 0.5s ease; 
+    will-change: transform; */
     cursor: pointer;
 }
 
-.product-card:hover {
+/* !Fix This */
+/* .product-card:hover {
     transform: scale(1.1);
-}
+} */
 
 .shoe-image-container img {
     width: 338px;
@@ -138,6 +139,7 @@ main .main-container {
 }
 
 .shoe-name-container span {
+    font-family: var(--font-boston-light);
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -161,6 +163,7 @@ main .main-container {
 
 .price-status-container .new,
 .price-status-container .limited,
+.price-status-container .sale,
 .price-status-container .none {
     position: absolute;
     display: flex;
@@ -180,6 +183,11 @@ main .main-container {
 .price-status-container .limited {
     color: #F3980E;
     border: 1px solid #F3980E;
+}
+
+.price-status-container .sale {
+    color: darkorchid;
+    border: 1px solid darkorchid;
 }
 
 .price-status-container .none {

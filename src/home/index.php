@@ -46,16 +46,16 @@
             </ul>
     
             <div class="search-bar">
-                <form action="your_search_endpoint.php" method="GET"> <!-- Change the action to your search handling URL -->
-                    <input class="inp-search" type="text" name="search" placeholder="Search" required> <!-- Add name attribute for form submission -->
+                <form action="../shop/search/search_query.php" method="GET"> 
+                    <input class="inp-search" type="text" name="user_search" placeholder="Search" required> 
                     <div class="image-container">
-                        <button type="submit" id="search-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                        <button type="submit" id="search-btn" style="background: none; border: none;"> 
                             <img src="../public/loupe-1@2x.png" alt="Search icon">
                         </button>
-                        <button type="button" id="favorite-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                        <button type="button" id="favorite-btn" style="background: none; border: none;"> 
                             <img src="../public/heart-1-1@2x.png" alt="Favorite icon">
                         </button>
-                        <button type="button" id="cart-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                        <button type="button" id="cart-btn" style="background: none; border: none;"> 
                             <img src="../public/market-1@2x.png" alt="Cart icon">
                         </button>
                     </div>

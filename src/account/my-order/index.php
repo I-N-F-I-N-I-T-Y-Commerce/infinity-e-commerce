@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../global.css" />
     <link rel="stylesheet" href="../account.css" />
 </head>
+</head>
 <body>
     <!-- * navigation -->
     <nav class="main-container">
@@ -29,16 +30,16 @@
     <div class="navigational-container">
         <div class="navigator">
             <ul class="list-categories">
-                <li><a href="../../shop/new arrivals/new-arrivals.html">New & Featured</a></li>
-                <li><a href="../../shop/women/women-footwear.html">Women</a></li>
-                <li><a href="../../shop/men/men-footwear.html">Men</a></li>
-                <li><a href="../../shop/kids/kids-footwear.html">Kids</a></li>
-                <li><a href="../../shop/sale/sale-footwear.html">Sale</a></li>
+                <li><a href="../../shop/new arrivals/new-arrivals.php">New & Featured</a></li>
+                <li><a href="../../shop/women/women-footwear.php">Women</a></li>
+                <li><a href="../../shop/men/men-footwear.php">Men</a></li>
+                <li><a href="../../shop/kids/kids-footwear.php">Kids</a></li>
+                <li><a href="../../shop/sale/sale-footwear.php">Sale</a></li>
             </ul>
     
             <div class="search-bar">
-                <form action="your_search_endpoint.php" method="GET"> <!-- Change the action to your search handling URL -->
-                    <input class="inp-search" type="text" name="search" placeholder="Search" required> <!-- Add name attribute for form submission -->
+                <form action="../../shop/search/search_query.php" method="GET"> <!-- Change the action to your search handling URL -->
+                    <input class="inp-search" type="text" name="user_search" placeholder="Search" required> <!-- Add name attribute for form submission -->
                     <div class="image-container">
                         <button type="submit" id="search-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
                             <img src="../../public/loupe-1@2x.png" alt="Search icon">
@@ -57,58 +58,68 @@
     <!-- * navigation -->
 
 
-
     <main>
         <div class="main-container">
             <div class="user-profile-acc-container">
-
-                <div class="account-container">
-                    <!-- TODO Account Navigation Container -->
-                    <div class="account-nav-container">
-                        <!-- * profile and username -->
-                        <div class="profile-container">
-                            <div class="account-profile-container">
-                                <img src="../../public/user-profile/Example User Profile.jpg" alt="">
-                            </div>
-                            <div class="account-username">John Paul-Bodino</div>
-                        </div>
-                        
-                        <!-- * navigation box -->
-                        <div class="ma-nav-btn-container">
-
-                            <div class="navigation-btn not-current" id="my-account">
-                                <a href="../my-account/index.html" class="ma-account-btn not-current">
-                                    <img src="../../public/user-profile/account.png" alt="" id="my-account-btn">
-                                    <p>My Account</p>
-                                </a>
-                            </div>
-                            <div class="navigation-btn not-current" id="my-orders">
-                                <a href="../my-order/index.html" class="ma-orders-btn not-current">                                    
-                                    <img src="../../public/user-profile/orders.png" alt="" id="my-orders-btn">
-                                    <p>My Orders</p>
-                                </a>
-                            </div>
-                            <div class="navigation-btn current" id="my-wishlist">
-                                <a href="" class="ma-wishlist-btn current">                                    
-                                    <img src="../../public/user-profile/wishlist-b.png" alt="" id="my-wishlist-btn">
-                                    <p>My WishList</p>
-                                </a>
-                            </div>
-                            <div class="navigation-btn not-current" id="my-inbox">
-                                <a href="../my-inbox/index.html" class="ma-inbox-btn not-current">                                    
-                                    <img src="../../public/user-profile/inbox.png" alt="" id="my-inbox-btn">
-                                    <p>My Inbox</p>
-                                </a>
-                            </div>
-                        </div>
-                        <script src="../account.js"></script>
-                    </div>
+                    <div class="account-container">
     
-                    <div id="myWishlist"  class="wishlist-container">
-                        <h1 class="wl-acc-status"><span>You have 0 Favourites, </span> John Paul-Bodino</h1>
-                        <div class="wl-box">
-                            <div class="favorite-container">
+                        <!-- TODO Account Navigation Container -->
+                        <div class="account-nav-container">
+                            <!-- * profile and username -->
+                            <div class="profile-container">
+                                <div class="account-profile-container">
+                                    <img src="../../public/user-profile/Example User Profile.jpg" alt="">
+                                </div>
+                                <div class="account-username">John Paul-Bodino</div>
+                            </div>
+                            
+                            <!-- * navigation box -->
+                            <div class="ma-nav-btn-container">
 
+                                <div class="navigation-btn not-current" id="my-account">
+                                    <a href="../my-account/index.php" class="ma-account-btn not-current">                                    
+                                        <img src="../../public/user-profile/account.png" alt="" id="my-account-btn">
+                                        <p>My Account</p>
+                                    </a>
+                                </div>
+                                <div class="navigation-btn current" id="my-orders">
+                                    <a href="" class="ma-orders-btn current">                                    
+                                        <img src="../../public/user-profile/orders-b.png" alt="" id="my-orders-btn">
+                                        <p>My Orders</p>
+                                    </a>
+                                </div>
+                                <div class="navigation-btn not-current" id="my-wishlist">
+                                    <a href="../my-wishlist/index.php" class="ma-wishlist-btn not-current">                                    
+                                        <img src="../../public/user-profile/wishlist.png" alt="" id="my-wishlist-btn">
+                                        <p>My WishList</p>
+                                    </a>
+                                </div>
+                                <div class="navigation-btn not-current" id="my-inbox">
+                                    <a href="../my-inbox/index.php" class="ma-inbox-btn not-current">                             
+                                        <img src="../../public/user-profile/inbox.png" alt="" id="my-inbox-btn">
+                                        <p>My Inbox</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <script src="../account.js"></script>
+                        </div>
+                    
+    
+                    <div id="myOrder"  class="order-container">
+    
+                        <h1 class="mo-acc-status"><span>You have 1 Order</span>, John Paul-Bodino</h1>
+    
+                        <div class="mo-message-box">
+                            <!-- * Product container -->
+                            <div class="order-product-container">
+                                <div class="order-product-pic">
+                                    <img src="../../public/user-profile/order-pic.png" alt="">
+                                </div>
+                                <div class="order-product-name">Nike Pegasus 950p </div>
+                                <div class="order-product-status">
+                                    <img src="../../public/user-profile/pending.png" alt="pending-pic">
+                                    <p>Pending</p>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,10 +1,19 @@
+<?php
+include("C:/Users/Vince/Github-Haimonmon/infinity-e-commerce/src/database/INFINITY/connection.php");
+
+$result = give_category($conn, 'New');
+
+$num_of_results = mysqli_num_rows($result);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INFINITY 👟 New Arrivls</title>
+    <title>INFINITY 👟 New Arrival's</title>
     <link rel="icon" href="../../public/logo_removebg_preview_q2J_icon.ico" sizes="16x16" type="image/x-icon">
     <link rel="stylesheet" href="../products-page.css">
     <link rel="stylesheet" href="../../global.css">
@@ -18,7 +27,7 @@
     <nav class="main-container">
         <div class="navigation-container">
             <header class="header">
-                <a href="../../home/index.html">
+                <a href="../../home/index.php">
                     <div class="branding">
                         <div class="logo-container">
                             <img class="logo-icon" loading="lazy" alt="" src="../../public/logo.svg" />
@@ -47,16 +56,16 @@
             </ul>
     
             <div class="search-bar">
-                <form action="your_search_endpoint.php" method="GET"> <!-- Change the action to your search handling URL -->
-                    <input class="inp-search" type="text" name="search" placeholder="Search" required> <!-- Add name attribute for form submission -->
+                <form action="../search/search_query.php" method="GET"> 
+                    <input class="inp-search" type="text" name="user_search" placeholder="Search" required> 
                     <div class="image-container">
-                        <button type="submit" id="search-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                        <button type="submit" id="search-btn" style="background: none; border: none;"> 
                             <img src="../../public/loupe-1@2x.png" alt="Search icon">
                         </button>
-                        <button type="button" id="favorite-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                        <button type="button" id="favorite-btn" style="background: none; border: none;"> 
                             <img src="../../public/heart-1-1@2x.png" alt="Favorite icon">
                         </button>
-                        <button type="button" id="cart-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                        <button type="button" id="cart-btn" style="background: none; border: none;"> 
                             <img src="../../public/market-1@2x.png" alt="Cart icon">
                         </button>
                     </div>
@@ -77,7 +86,9 @@
 
             <div class="results-container">
                 <div class="num-results">
-                    <p>3 <span class="highlight2">Results</span></p>
+                    <?php 
+                        echo "<p> $num_of_results <span class=\"highlight2\">Results</span></p>";
+                    ?>
                 </div>
 
                 <div class="dropdown-results">
@@ -88,9 +99,42 @@
 
             <!-- TODO: Main Product Display | Use PHP for displaying product cards in each using for loop -->
             <div class="product-display">
-                <div class="product-card"></div>
-                <div class="product-card"></div>
-                <div class="product-card"></div>
+                <?php 
+                    if ($num_of_results > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                            $posted_expiration_date = is_new($row["posted_date"]);
+
+                            if (date("Y-m-d") <= $posted_expiration_date) {
+                                echo '
+                                <div class="product-card">
+                                    <div class="shoe-image-container">
+                                        <img src="'. $row["shoe_image"] .'" alt="">
+                                        <div class="shoe-price-name-detail-container">
+                                            <div class="shoe-name-container">
+                                                <span>'. $row["shoe_name"] .'</span>
+                                            </div>
+                                            <div class="price-status-container">
+                                                <div class="shoe-price-container">
+                                                    <span>₱ '. $row["shoe_price"] .'</span>
+                                                </div>
+                                                <div class="shoe-status new">
+                                                    <span>New</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="add-to-cart-container">
+                                            <img src="../../public/shopping-bag (1).png" id="add-to-cart"  alt="">
+                                            <img src="../../public/heart (6).png" id="wishlist" class="add-to-favorites" alt="">
+                                        </div>
+                                    </div>
+                                </div>';
+                            }
+
+                            
+                        }
+                    }
+                    ?>
             </div>
             <!-- TODO: Main Product Display  -->
         </div>

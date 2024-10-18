@@ -1,63 +1,9 @@
 <?php
 include("C:/Users/Vince/Github-Haimonmon/infinity-e-commerce/src/database/INFINITY/connection.php");
 
-$query = "SELECT * FROM product WHERE category = 'Men'";
-
-$result = mysqli_query($conn, $query);
+$result = give_category($conn, 'Men');
 
 $num_of_results = mysqli_num_rows($result);
-
-function is_new($posted_date) {
-    return date('Y-m-d', strtotime($posted_date . " +5 days"));
-}
-
-/**
- * Function Still on work for temporary only
- */
-function check_status($row) {
-    $posted_date = $row["posted_date"];
-    $posted_expiration_date = is_new($row["posted_date"]);
-
-    // * Both Limited and On Sales
-    if ($row["is_limited"] == 1 && $row["is_on_sale"] == 1) {
-        return [
-            'shoe_status' => 'limited-sale',
-            'shoe_status_pan' => 'Limited Sale'
-        ];
-    }
-
-    // * Limited Edition
-    if ($row["is_on_sale"] == 1) {
-        return [
-            'shoe_status' => 'sale',
-            'shoe_status_pan' => 'On Sale'
-        ];
-    }
-
-    // * Limited Edition
-    if ($row["is_limited"] == 1) {
-        return [
-            'shoe_status' => 'limited',
-            'shoe_status_pan' => 'Limited Edition'
-        ];
-    }
-
-    // * New owo
-    if (date("Y-m-d") <= $posted_expiration_date) {
-        return [
-            'shoe_status' => 'new',
-            'shoe_status_pan' => 'New'
-        ];
-    }
-
-    // * Nothings special just a regular product
-    if ($row["is_limited"] == 0) {
-        return [
-            'shoe_status' => 'none',
-            'shoe_status_pan' => 'None'
-        ];
-    }
-}
 
 ?>
 <!DOCTYPE html>
@@ -79,7 +25,7 @@ function check_status($row) {
     <nav class="main-container">
         <div class="navigation-container">
             <header class="header">
-                <a href="../../home/index.html">
+                <a href="../../home/index.php">
                     <div class="branding">
                         <div class="logo-container">
                             <img class="logo-icon" loading="lazy" alt="" src="../../public/logo.svg" />
@@ -108,16 +54,16 @@ function check_status($row) {
             </ul>
     
             <div class="search-bar">
-                <form action="your_search_endpoint.php" method="GET"> <!-- Change the action to your search handling URL -->
-                    <input class="inp-search" type="text" name="search" placeholder="Search" required> <!-- Add name attribute for form submission -->
+                <form action="../search/search_query.php" method="GET">
+                    <input class="inp-search" type="text" name="user_search" placeholder="Search" required> 
                     <div class="image-container">
-                        <button type="submit" id="search-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                        <button type="submit" id="search-btn" style="background: none; border: none;"> 
                             <img src="../../public/loupe-1@2x.png" alt="Search icon">
                         </button>
-                        <button type="button" id="favorite-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                        <button type="button" id="favorite-btn" style="background: none; border: none;"> 
                             <img src="../../public/heart-1-1@2x.png" alt="Favorite icon">
                         </button>
-                        <button type="button" id="cart-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
+                        <button type="button" id="cart-btn" style="background: none; border: none;"> 
                             <img src="../../public/market-1@2x.png" alt="Cart icon">
                         </button>
                     </div>
@@ -151,7 +97,6 @@ function check_status($row) {
 
             <!-- TODO: Main Product Display | Use PHP for displaying product cards in each using for loop -->
             <div class="product-display">
-
                 <?php 
                 if ($num_of_results > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {

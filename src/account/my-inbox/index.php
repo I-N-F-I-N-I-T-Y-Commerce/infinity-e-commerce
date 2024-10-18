@@ -29,16 +29,16 @@
     <div class="navigational-container">
         <div class="navigator">
             <ul class="list-categories">
-                <li><a href="../../shop/new arrivals/new-arrivals.html">New & Featured</a></li>
-                <li><a href="../../shop/women/women-footwear.html">Women</a></li>
-                <li><a href="../../shop/men/men-footwear.html">Men</a></li>
-                <li><a href="../../shop/kids/kids-footwear.html">Kids</a></li>
-                <li><a href="../../shop/sale/sale-footwear.html">Sale</a></li>
+                <li><a href="../../shop/new arrivals/new-arrivals.php">New & Featured</a></li>
+                <li><a href="../../shop/women/women-footwear.php">Women</a></li>
+                <li><a href="../../shop/men/men-footwear.php">Men</a></li>
+                <li><a href="../../shop/kids/kids-footwear.php">Kids</a></li>
+                <li><a href="../../shop/sale/sale-footwear.php">Sale</a></li>
             </ul>
     
             <div class="search-bar">
-                <form action="your_search_endpoint.php" method="GET"> <!-- Change the action to your search handling URL -->
-                    <input class="inp-search" type="text" name="search" placeholder="Search" required> <!-- Add name attribute for form submission -->
+                <form action="../../shop/search/search_query.php" method="GET"> <!-- Change the action to your search handling URL -->
+                    <input class="inp-search" type="text" name="user_search" placeholder="Search" required> <!-- Add name attribute for form submission -->
                     <div class="image-container">
                         <button type="submit" id="search-btn" style="background: none; border: none;"> <!-- Change to button for better semantics -->
                             <img src="../../public/loupe-1@2x.png" alt="Search icon">
@@ -75,19 +75,19 @@
                         <!-- * navigation box -->
                         <div class="ma-nav-btn-container">
                             <div class="navigation-btn not-current" id="my-account">
-                                <a href="../my-account/index.html" class="ma-account-btn not-current">                                    
+                                <a href="../my-account/index.php" class="ma-account-btn not-current">                                    
                                     <img src="../../public/user-profile/account.png" alt="" id="my-account-btn">
                                     <p>My Account</p>
                                 </a>
                             </div>
                             <div class="navigation-btn not-current" id="my-orders">
-                                <a href="../my-order/index.html" class="ma-orders-btn not-current">                                    
+                                <a href="../my-order/index.php" class="ma-orders-btn not-current">                                    
                                     <img src="../../public/user-profile/orders.png" alt="" id="my-orders-btn">
                                     <p>My Orders</p>
                                 </a>
                             </div>
                             <div class="navigation-btn not-current" id="my-wishlist">
-                                <a href="../my-wishlist/index.html" class="ma-wishlist-btn not-current">                                    
+                                <a href="../my-wishlist/index.php" class="ma-wishlist-btn not-current">                                    
                                     <img src="../../public/user-profile/wishlist.png" alt="" id="my-wishlist-btn">
                                     <p>My WishList</p>
                                 </a>
