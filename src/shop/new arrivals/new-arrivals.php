@@ -1,10 +1,17 @@
 <?php
 include("C:/Users/Vince/Github-Haimonmon/infinity-e-commerce/src/database/INFINITY/connection.php");
+session_start();
 
 $result = give_category($conn, 'New');
 
 $num_of_results = mysqli_num_rows($result);
 
+if (isset($_SESSION['account_id'])) {
+    $account_id = $_SESSION['account_id'];
+    $username = $_SESSION['username'];
+
+    echo "$account_id Successfuly";
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +29,6 @@ $num_of_results = mysqli_num_rows($result);
 </head>
 
 <body>
-
     <!-- * navigation -->
     <nav class="main-container">
         <div class="navigation-container">
@@ -35,13 +41,27 @@ $num_of_results = mysqli_num_rows($result);
                         <b class="tag-name">I N F I N I T Y</b>
                     </div>
                 </a>
-                <a href="../../authentication/account-sign-up.html">
-                    <div class="account-container">
-                        <!-- * NOTE If user is login already this signup will exchange to his/her username -->
-                        <div class="sign-up">Sign Up</div>
-                        <img src="../../public/Account.png" alt="">
-                    </div>
-                </a>
+                <?php
+                if (isset($_SESSION['account_id'])) {
+                    echo " 
+                    <a href=\"../../account/my-account/index.php\">
+                        <div class=\"account-container\">
+                            <!-- * NOTE If user is login already this signup will exchange to his/her username -->
+                            <div class=\"sign-up\">$username</div>
+                            <img src=\"../../public/Account.png\" alt=\"\">
+                        </div>
+                    </a>";
+                } else {
+                    echo " 
+                    <a href=\"../../authentication/account-sign-in.php\">
+                        <div class=\"account-container\">
+                            <!-- * NOTE If user is login already this signup will exchange to his/her username -->
+                            <div class=\"sign-up\">Sign In</div>
+                            <img src=\"../../public/Account.png\" alt=\"\">
+                        </div>
+                    </a>";
+                }
+                ?>
             </header>
         </div>
     </nav>
@@ -59,15 +79,49 @@ $num_of_results = mysqli_num_rows($result);
                 <form action="../search/search_query.php" method="GET"> 
                     <input class="inp-search" type="text" name="user_search" placeholder="Search" required> 
                     <div class="image-container">
-                        <button type="submit" id="search-btn" style="background: none; border: none;"> 
-                            <img src="../../public/loupe-1@2x.png" alt="Search icon">
-                        </button>
-                        <button type="button" id="favorite-btn" style="background: none; border: none;"> 
-                            <img src="../../public/heart-1-1@2x.png" alt="Favorite icon">
-                        </button>
-                        <button type="button" id="cart-btn" style="background: none; border: none;"> 
-                            <img src="../../public/market-1@2x.png" alt="Cart icon">
-                        </button>
+                    <?php 
+                         if (isset($_SESSION['account_id'])) {
+                            echo "
+                    
+                            <button type=\"submit\" id=\"search-btn\" style=\"background: none; border: none;\"> 
+                                <img src=\"../../public/loupe-1@2x.png\" alt=\"Search icon\">
+                            </button>
+                            
+
+                            <a href=\"../../account/my-wishlist/index.php\">
+                                <button type=\"button\" id=\"favorite-btn\" style=\"background: none; border: none;\"> 
+                                    <img src=\"../../public/heart-1-1@2x.png\" alt=\"Favorite icon\">
+                                </button>
+                            </a>
+
+                            <a href=\"../../account/my-order/index.php\">
+                                <button type=\"button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
+                                    <img src=\"../../public/market-1@2x.png\" alt=\"Cart icon\">
+                                </button>
+                            </a>
+                            ";
+                        } else {
+                            echo " 
+                           
+                            <button type=\"submit\" id=\"search-btn\" style=\"background: none; border: none;\"> 
+                                <img src=\"../../public/loupe-1@2x.png\" alt=\"Search icon\">
+                            </button>
+                           
+
+                            <a href=\"../../authentication/account-sign-in.php\">
+                                <button type=\"button\" id=\"favorite-btn\" style=\"background: none; border: none;\"> 
+                                    <img src=\"../../public/heart-1-1@2x.png\" alt=\"Favorite icon\">
+                                </button>
+                            </a>
+
+                            <a href=\"../../authentication/account-sign-in.php\">
+                                <button type=\"button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
+                                    <img src=\"../../public/market-1@2x.png\" alt=\"Cart icon\">
+                                </button>
+                            </a>
+                            ";
+                        }
+                        ?>
                     </div>
                 </form>
             </div>
@@ -81,7 +135,7 @@ $num_of_results = mysqli_num_rows($result);
         <div class="main-container">
             <div class="category-welcome">
                 <h1>New <span class="highlight2">Arrival's</span></h1>
-                <center><p>From  <span class="highlight2">Aesthetic</span> to new releases, our most-popular shoes and clothing styles are <span class="highlight1">ready to shop.</span></p></center>
+                <center><p>From  <span class="highlight2">Aesthetic</span> to new releases and limited Editions, our most-popular shoes and clothing styles are <span class="highlight1">ready to shop.</span></p></center>
             </div>
 
             <div class="results-container">
@@ -104,8 +158,17 @@ $num_of_results = mysqli_num_rows($result);
                         while ($row = mysqli_fetch_assoc($result)) {
 
                             $posted_expiration_date = is_new($row["posted_date"]);
+                            $is_limited = $row["is_limited"];
 
-                            if (date("Y-m-d") <= $posted_expiration_date) {
+                            if ($is_limited == 1) {
+                                $container_status = 'limited';
+                                $product_status = 'Limited Edition';
+                            } else {
+                                $container_status = 'new';
+                                $product_status = 'New';
+                            }
+
+                            if (date("Y-m-d") <= $posted_expiration_date || $is_limited == 1) {
                                 echo '
                                 <div class="product-card">
                                     <div class="shoe-image-container">
@@ -118,8 +181,8 @@ $num_of_results = mysqli_num_rows($result);
                                                 <div class="shoe-price-container">
                                                     <span>₱ '. $row["shoe_price"] .'</span>
                                                 </div>
-                                                <div class="shoe-status new">
-                                                    <span>New</span>
+                                                <div class="shoe-status '.$container_status.'">
+                                                    <span>'. $product_status .'</span>
                                                 </div>
                                             </div>
                                         </div>

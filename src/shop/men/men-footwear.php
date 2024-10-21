@@ -1,10 +1,17 @@
 <?php
 include("C:/Users/Vince/Github-Haimonmon/infinity-e-commerce/src/database/INFINITY/connection.php");
+session_start();
 
 $result = give_category($conn, 'Men');
 
 $num_of_results = mysqli_num_rows($result);
 
+if (isset($_SESSION['account_id'])) {
+    $account_id = $_SESSION['account_id'];
+    $username = $_SESSION['username'];
+
+    echo "$account_id Successfuly";
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,13 +40,27 @@ $num_of_results = mysqli_num_rows($result);
                         <b class="tag-name">I N F I N I T Y</b>
                     </div>
                 </a>
-                <a href="../../authentication/account-sign-up.html">
-                    <div class="account-container">
-                        <!-- * NOTE If user is login already this signup will exchange to his/her username -->
-                        <div class="sign-up">Sign Up</div>
-                        <img src="../../public/Account.png" alt="">
-                    </div>
-                </a>
+                <?php
+                if (isset($_SESSION['account_id'])) {
+                    echo " 
+                    <a href=\"../../account/my-account/index.php\">
+                        <div class=\"account-container\">
+                            <!-- * NOTE If user is login already this signup will exchange to his/her username -->
+                            <div class=\"sign-up\">$username</div>
+                            <img src=\"../../public/Account.png\" alt=\"\">
+                        </div>
+                    </a>";
+                } else {
+                    echo " 
+                    <a href=\"../../authentication/account-sign-in.php\">
+                        <div class=\"account-container\">
+                            <!-- * NOTE If user is login already this signup will exchange to his/her username -->
+                            <div class=\"sign-up\">Sign In</div>
+                            <img src=\"../../public/Account.png\" alt=\"\">
+                        </div>
+                    </a>";
+                }
+                ?>
             </header>
         </div>
     </nav>
@@ -57,15 +78,49 @@ $num_of_results = mysqli_num_rows($result);
                 <form action="../search/search_query.php" method="GET">
                     <input class="inp-search" type="text" name="user_search" placeholder="Search" required> 
                     <div class="image-container">
-                        <button type="submit" id="search-btn" style="background: none; border: none;"> 
-                            <img src="../../public/loupe-1@2x.png" alt="Search icon">
-                        </button>
-                        <button type="button" id="favorite-btn" style="background: none; border: none;"> 
-                            <img src="../../public/heart-1-1@2x.png" alt="Favorite icon">
-                        </button>
-                        <button type="button" id="cart-btn" style="background: none; border: none;"> 
-                            <img src="../../public/market-1@2x.png" alt="Cart icon">
-                        </button>
+                    <?php 
+                         if (isset($_SESSION['account_id'])) {
+                            echo "
+                    
+                            <button type=\"submit\" id=\"search-btn\" style=\"background: none; border: none;\"> 
+                                <img src=\"../../public/loupe-1@2x.png\" alt=\"Search icon\">
+                            </button>
+                            
+
+                            <a href=\"../../account/my-wishlist/index.php\">
+                                <button type=\"button\" id=\"favorite-btn\" style=\"background: none; border: none;\"> 
+                                    <img src=\"../../public/heart-1-1@2x.png\" alt=\"Favorite icon\">
+                                </button>
+                            </a>
+
+                            <a href=\"../../account/my-order/index.php\">
+                                <button type=\"button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
+                                    <img src=\"../../public/market-1@2x.png\" alt=\"Cart icon\">
+                                </button>
+                            </a>
+                            ";
+                        } else {
+                            echo " 
+                           
+                            <button type=\"submit\" id=\"search-btn\" style=\"background: none; border: none;\"> 
+                                <img src=\"../../public/loupe-1@2x.png\" alt=\"Search icon\">
+                            </button>
+                           
+
+                            <a href=\"../../authentication/account-sign-in.php\">
+                                <button type=\"button\" id=\"favorite-btn\" style=\"background: none; border: none;\"> 
+                                    <img src=\"../../public/heart-1-1@2x.png\" alt=\"Favorite icon\">
+                                </button>
+                            </a>
+
+                            <a href=\"../../authentication/account-sign-in.php\">
+                                <button type=\"button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
+                                    <img src=\"../../public/market-1@2x.png\" alt=\"Cart icon\">
+                                </button>
+                            </a>
+                            ";
+                        }
+                        ?>
                     </div>
                 </form>
             </div>
@@ -103,29 +158,59 @@ $num_of_results = mysqli_num_rows($result);
 
                         $status = check_status($row);
 
-                        echo '
-                        <div class="product-card">
-                            <div class="shoe-image-container">
-                                <img src="'. $row["shoe_image"] .'" alt="">
-                                <div class="shoe-price-name-detail-container">
-                                    <div class="shoe-name-container">
-                                        <span>'. $row["shoe_name"] .'</span>
+                        $original_price = $row['shoe_price'];
+                        $discounted_price = calculate_discount($original_price);
+
+                        if ($status['shoe_status'] === 'sale') {
+                            echo '
+                            <div class="product-card">
+                                <div class="shoe-image-container">
+                                    <img src="'. $row["shoe_image"] .'" alt="">
+                                    <div class="shoe-price-name-detail-container">
+                                        <div class="shoe-name-container">
+                                            <span>'. $row["shoe_name"] .'</span>
+                                        </div>
+                                        <div class="price-status-container">
+                                            <div class="shoe-price-container">
+                                                <span class = "original-price-crossing">₱ '. number_format($original_price,2) .'</span>
+                                                <span>₱ '. number_format($discounted_price,2) .'</span>
+                                            </div>
+                                            <div class="shoe-status '. $status['shoe_status'] .'">
+                                                <span> '. $status['shoe_status_pan'] .'</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="price-status-container">
-                                        <div class="shoe-price-container">
-                                            <span>₱ '. $row["shoe_price"] .'</span>
-                                        </div>
-                                        <div class="shoe-status '. $status['shoe_status'] .'">
-                                            <span> '. $status['shoe_status_pan'] .'</span>
-                                        </div>
+                                    <div class="add-to-cart-container">
+                                        <img src="../../public/shopping-bag (1).png" id="add-to-cart"  alt="">
+                                        <img src="../../public/heart (6).png" id="wishlist" class="add-to-favorites" alt="">
                                     </div>
                                 </div>
-                                <div class="add-to-cart-container">
-                                    <img src="../../public/shopping-bag (1).png" id="add-to-cart"  alt="">
-                                    <img src="../../public/heart (6).png" id="wishlist" class="add-to-favorites" alt="">
+                            </div>';
+                        } else {
+                            echo '
+                            <div class="product-card">
+                                <div class="shoe-image-container">
+                                    <img src="'. $row["shoe_image"] .'" alt="">
+                                    <div class="shoe-price-name-detail-container">
+                                        <div class="shoe-name-container">
+                                            <span>'. $row["shoe_name"] .'</span>
+                                        </div>
+                                        <div class="price-status-container">
+                                            <div class="shoe-price-container">
+                                                <span>₱ '. $row["shoe_price"] .'</span>
+                                            </div>
+                                            <div class="shoe-status '. $status['shoe_status'] .'">
+                                                <span> '. $status['shoe_status_pan'] .'</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="add-to-cart-container">
+                                        <img src="../../public/shopping-bag (1).png" id="add-to-cart"  alt="">
+                                        <img src="../../public/heart (6).png" id="wishlist" class="add-to-favorites" alt="">
+                                    </div>
                                 </div>
-                            </div>
-                        </div>';
+                            </div>';
+                        }
                     }
                 }
                 ?>

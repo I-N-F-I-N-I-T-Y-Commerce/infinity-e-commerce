@@ -30,10 +30,19 @@ function give_category($conn, $category_name) {
 }
 
 function search_for($conn, $search_query) {
-    $query = "SELECT * FROM product WHERE shoe_name LIKE '%". $conn->real_escape_string($search_query) ."%' 
-    OR category LIKE '%". $conn->real_escape_string($search_query) ."%'
-    OR shoe_brand LIKE '%". $conn->real_escape_string($search_query) ."%'
-    ";
+
+
+    if ($search_query == 'sale') {
+        $query = "SELECT * FROM product WHERE is_on_sale = 1";
+        // return mysqli_query($conn, $query);
+
+
+    } else {
+        $query = "SELECT * FROM product WHERE shoe_name LIKE '%". $conn->real_escape_string($search_query) ."%' 
+        OR category LIKE '%". $conn->real_escape_string($search_query) ."%'
+        OR shoe_brand LIKE '%". $conn->real_escape_string($search_query) ."%'
+        ";
+    }
 
     return mysqli_query($conn, $query);
 }
@@ -89,6 +98,22 @@ function check_status($row) {
             'shoe_status' => 'none',
             'shoe_status_pan' => 'None'
         ];
+    }
+}
+
+function calculate_discount($price) {
+    if ($price >= 5000) {
+        // * 20% discount for items above or equal to ₱5000
+        return $price * 0.80;
+    } elseif ($price >= 3000) {
+        // * 15% discount for items above or equal to ₱3000
+        return $price * 0.85;
+    } elseif ($price >= 1000) {
+        // * 10% discount for items above or equal to ₱1000
+        return $price * 0.90;
+    } else {
+        // * 5% discount for items below ₱1000
+        return $price * 0.85;
     }
 }
 ?>

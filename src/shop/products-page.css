@@ -233,3 +233,8 @@ main .main-container {
 .highlight2 {
     color: #F6BC72;
 }
+
+.original-price-crossing {
+    text-decoration: line-through;
+    color: #4d4133 !important;
+}

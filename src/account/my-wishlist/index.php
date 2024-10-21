@@ -15,7 +15,7 @@
     <nav class="main-container">
         <div class="navigation-container">
             <header class="header">
-                <a href="../../home/index.html">
+                <a href="../../home/index.php">
                     <div class="branding">
                         <div class="logo-container">
                             <img class="logo-icon" loading="lazy" alt="" src="../../public/logo.svg" />

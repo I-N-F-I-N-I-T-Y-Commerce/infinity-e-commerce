@@ -95,13 +95,15 @@ const progressBarCheckpointsFinalStep = (signUpForm) => {
 }
 
 const showFirstStep = (signUpForm) => {
+    console.log("Welcome to sign in")
+
     signUpForm.innerHTML = '';
 
     signUpForm.innerHTML += `
             <h1>Sign Up for your Account.</h1>
-            <h3>Already have an account? <a href="./account-sign-in.html" class="highlight1">Sign In</a></h3>
+            <h3>Already have an account? <a href="./account-sign-in.php" class="highlight1">Sign In</a></h3>
     
-            <form action="" onsubmit='return checkInputCredentialsFirstStep()' name='sign-up-form'>
+            <form method="POST" action="./account-sign-up.php" onsubmit='return checkInputCredentialsFirstStep()' name='sign-up-form'>
                 <label for="firstname">First Name</label><br>
                 <input type="text" class="correct" name="firstname" id="input-first-name" value="${savedFormData.firstName || ''}"><br>
                 <p id="notify-first-name"></p>
@@ -149,31 +151,43 @@ const showFirstStep = (signUpForm) => {
     });
 }
 
-
-const checkContactNumber = (formInputName, idName, message) => {
+const checkContactNumber = (formInputName, idName) => {
     const elementNotifierName = document.getElementById(`notify-${idName}`);
     const elementInputBox = document.getElementById(`input-${idName}`)
     
     const validAreaCode = (formInputName[0] === "6" && formInputName[1] === "3") || (formInputName[0] === "0" && formInputName[1] === "9")
-    console.log(formInputName[0],"===","6","&& ",formInputName[1]=== "3" )
-    console.log(!validAreaCode)
+    const validNumberLength = (formInputName.length === 11)
 
     if (!validAreaCode) {
-        elementNotifierName.innerText = message;
+        elementNotifierName.innerText = '* Invalid Area or Starting number code';
         elementInputBox.classList.remove('correct')
         elementInputBox.classList.add('wrong')
+        return true
     } else {
         elementNotifierName.innerText = '';
         elementInputBox.classList.remove('wrong')
         elementInputBox.classList.add('correct')
     }
+
+    if (!validNumberLength) {
+        elementNotifierName.innerText = '* Contact Number should be in 11 Digits';
+        elementInputBox.classList.remove('correct')
+        elementInputBox.classList.add('wrong')
+        return true
+    } else {
+        elementNotifierName.innerText = '';
+        elementInputBox.classList.remove('wrong')
+        elementInputBox.classList.add('correct')
+    }
+
+    return false
 }
 
 const checkInputCredentialsFirstStep = () => {
     let form = document.forms['sign-up-form']
     let firstName = form['firstname'].value
     let lastName = form['last-name'].value
-    let contactNum = form['contact-num'].value
+    let contactNum = (form['contact-num'].value)
     let locationAddress = form['loc-address'].value
 
     notify(firstName, 'first-name','* First Name is needed')
@@ -184,8 +198,8 @@ const checkInputCredentialsFirstStep = () => {
 
     notify(locationAddress, 'loc-address','* Location Address is needed')
 
-    checkContactNumber(contactNum, 'contact-num','* Invalid Area or Starting number code')
-
+    if (checkContactNumber(contactNum, 'contact-num')) return false
+    
     if (!firstName || !lastName || !contactNum || !locationAddress) return false
 
     savedFormData = { ...savedFormData, firstName, lastName, contactNum, locationAddress };
@@ -199,9 +213,9 @@ const showSecondStep = (signUpForm) => {
 
     signUpForm.innerHTML += `
             <h1>Sign Up for your Account.</h1>
-            <h3>Already have an account? <a href="./account-sign-in.html" class="highlight1">Sign In</a></h3>
+            <h3>Already have an account? <a href="./account-sign-in.php" class="highlight1">Sign In</a></h3>
     
-            <form action="" onsubmit='return checkInputCredentialsSecondStep()' name='sign-up-form'>
+            <form method="POST" onsubmit='return checkInputCredentialsSecondStep()' name='sign-up-form'>
                 <label for="username">User Name</label><br>
                 <input type="text" class="correct" name="username" id="input-user-name" value="${savedFormData.userName || ''}"><br>
                 <p id="notify-user-name"></p>
@@ -257,6 +271,59 @@ const showSecondStep = (signUpForm) => {
     });
 }
 
+const checkPassword = (password, confirmPassword, passwordElementId, confirmPasswordElementId) => {
+    const passwordNotifyElement = document.getElementById(`notify-${passwordElementId}`);
+    const passwordInputElement = document.getElementById(`input-${passwordElementId}`);
+
+    const confirmPasswordNotifyElement = document.getElementById(`notify-${confirmPasswordElementId}`);
+    const confirmPasswordInputElement = document.getElementById(`input-${confirmPasswordElementId}`);
+
+    if (password !== confirmPassword) {
+        passwordNotifyElement.innerText = "* Password didnt match";
+        confirmPasswordNotifyElement.innerText =  "* Password didnt match";
+
+        passwordInputElement.classList.remove('correct')
+        passwordInputElement.classList.add('wrong')
+
+        confirmPasswordInputElement.classList.remove('correct')
+        confirmPasswordInputElement.classList.add('wrong')
+        
+        console.log(password, confirmPassword)
+        return true
+    } else {
+        passwordNotifyElement.innerText = '';
+        confirmPasswordNotifyElement.innerText = '';
+        passwordInputElement.classList.remove('wrong')
+        passwordInputElement.classList.add('correct')
+
+        confirmPasswordInputElement.classList.remove('wrong')
+        confirmPasswordInputElement.classList.add('correct')
+    }
+
+    return false
+}
+
+const checkEmail = (formInputName, idName) => {
+    const elementNotifierName = document.getElementById(`notify-${idName}`);
+    const elementInputBox = document.getElementById(`input-${idName}`)
+
+    const validEmails = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formInputName);
+
+    if (!validEmails) {
+        elementNotifierName.innerText = "Invalid Email Address";
+        elementInputBox.classList.remove('correct')
+        elementInputBox.classList.add('wrong')
+
+        return true
+    } else {
+        elementNotifierName.innerText = '';
+        elementInputBox.classList.remove('wrong')
+        elementInputBox.classList.add('correct')
+    }
+
+    return false
+}
+
 const checkInputCredentialsSecondStep = () => {
     let form = document.forms['sign-up-form']
     let userName = form['username'].value
@@ -272,6 +339,10 @@ const checkInputCredentialsSecondStep = () => {
 
     notify(confirmPassword, 'confirm-password','* Confirmation of Password is needed')
 
+    if (checkPassword(password, confirmPassword, 'password', 'confirm-password')) return false
+
+    if (checkEmail(email, 'email')) return false
+
     if (!userName || !email || !password || !confirmPassword ) return false
 
     savedFormData = { ...savedFormData, userName, email, password};
@@ -283,10 +354,11 @@ const showFinalStep = (signUpForm) => {
 
         signUpForm.innerHTML += `
                 <h1>Sign Up for your Account.</h1>
-                <h3>Already have an account? <a href="./account-sign-in.html" class="highlight1">Sign In</a></h3>
+                <h3>Already have an account? <a href="./account-sign-in.php" class="highlight1">Sign In</a></h3>
         
                 <!-- * Put the php file here in ' action ' attribute -->
-                <form action="">
+                <form action="./account-sign-up.php" method="POST">
+                    <input type="hidden" name="formData" value='${JSON.stringify(savedFormData)}'>
                     <div class="terms-image-container">
                         <img src="../public/IMG-TERMS-0001.png" alt="">
                         <div class="circle-shoe-highlight1"></div>
@@ -316,18 +388,18 @@ const showFinalStep = (signUpForm) => {
                     <div class="checkpoint3 on-progress" id="point3"></div>
                     <p id="submit" class="on-progress-step">Submit</p>
                 </div>`
-
         progressBarCheckpointsFinalStep(signUpForm)
         console.log(savedFormData);
 }
 
 const signUpForm = () => {
     const signUpForm = document.getElementById('sign-up-form')
-    
+    console.log('lol')
     showFirstStep(signUpForm)
 }
 
 const main = () => {
+    console.log("Lmao")
     signUpForm()
 }
 

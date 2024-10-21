@@ -1,3 +1,17 @@
+<?php 
+include("C:/Users/Vince/Github-Haimonmon/infinity-e-commerce/src/database/INFINITY/connection.php");
+session_start();
+
+if (isset($_SESSION['account_id'])) {
+    $account_id = $_SESSION['account_id'];
+    $username = $_SESSION['username'];
+
+    echo "$account_id Successfuly";
+} 
+
+// * REFERENCE FOR LOGOUT: https://stackoverflow.com/questions/3512507/proper-way-to-logout-from-a-session-in-php
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +32,7 @@
     <nav class="main-container">
         <div class="navigation-container">
             <header class="header">
-                <a href="../../home/index.html">
+                <a href="../../home/index.php">
                     <div class="branding">
                         <div class="logo-container">
                             <img class="logo-icon" loading="lazy" alt="" src="../../public/logo.svg" />
@@ -72,12 +86,40 @@
                     <div class="account-nav-container">
                         <!-- * profile and username -->
                         <div class="profile-container">
+                            <div class="logout-container" id="logout-container">
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                            </div>
+
+                            <div class="logout-dropdown-customized" style="display: none;" id="logout-container-original">
+                                <form action="../../authentication/logout.php" method="POST">
+                                    <input type="submit" name="submit" value="Log Out">
+                                </form>
+                            </div>
                             <div class="account-profile-container">
                                 <img src="../../public/user-profile/Example User Profile.jpg" alt="">
                             </div>
-                            <div class="account-username">John Paul-Bodino</div>
+                            <?php
+                                if (isset($_SESSION['account_id'])) {
+                                    echo "<div class=\"account-username\">$username</div> ";
+                                } else {
+                                    echo "<div class=\"account-username\">Guest</div> ";
+                                }
+                            ?>
                         </div>
-                        
+                        <script>
+                            const container = document.getElementById('logout-container');
+                            const dropdown = document.getElementById('logout-container-original');
+
+                            container.addEventListener('click', function() {
+                                if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+                                    dropdown.style.display = 'flex'; 
+                                } else {
+                                    dropdown.style.display = 'none';
+                                }
+                            });
+                        </script>
                         <!-- * navigation box -->
                         <div class="ma-nav-btn-container">
                             <div class="navigation-btn" id="my-account">
@@ -111,7 +153,14 @@
                     <!-- TODO  Account Information Data Container -->
                     <div id="my-account-section" class="account-info-container">
                         <div class="notify-user">
-                            <h1><span class="highlight1">Hello there,</span> John Paul-Bodino</h1>
+                            <?php 
+                            if (isset($_SESSION['account_id'])) {
+                                echo "<h1><span class=\"highlight1\">Hello there,</span> $username</h1>";
+                            } else {
+                                echo "<h1><span class=\"highlight1\">Hello there,</span> Guest</h1>";
+                            }
+                            ?>
+                          
                         </div>
 
                         <div class="contact-info-container">

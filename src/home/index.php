@@ -1,3 +1,16 @@
+<?php 
+include("C:/Users/Vince/Github-Haimonmon/infinity-e-commerce/src/database/INFINITY/connection.php");
+session_start();
+
+if (isset($_SESSION['account_id'])) {
+    $account_id = $_SESSION['account_id'];
+    $username = $_SESSION['username'];
+
+    echo "$account_id Successfuly";
+} 
+
+// * REFERENCE FOR LOGOUT: https://stackoverflow.com/questions/3512507/proper-way-to-logout-from-a-session-in-php
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +30,7 @@
     <nav class="main-container">
         <div class="navigation-container">
             <header class="header">
-                <a href="../home/index.html">
+                <a href="">
                     <div class="branding">
                         <div class="logo-container">
                             <img class="logo-icon" loading="lazy" alt="" src="../public/logo.svg" />
@@ -25,13 +38,29 @@
                         <b class="tag-name">I N F I N I T Y</b>
                     </div>
                 </a>
-                <a href="../authentication/account-sign-up.html">
-                    <div class="account-container">
-                        <!-- * NOTE If user is login already this signup will exchange to his/her username -->
-                        <div class="sign-up">Sign Up</div>
-                        <img src="../public/Account.png" alt="">
-                    </div>
-                </a>
+
+                <?php
+                if (isset($_SESSION['account_id'])) {
+                    echo "
+                    <a href=\"../account/my-account/index.php\">
+                        <div class=\"account-container\">
+                            <!-- * NOTE If user is login already this signup will exchange to his/her username -->
+                            <div class=\"sign-up\">$username</div>
+                            <img src=\"../public/Account.png\" alt=\"\">
+                        </div>
+                    </a>";
+                } else {
+                    echo " 
+                    <a href=\"../authentication/account-sign-in.php\">
+                        <div class=\"account-container\">
+                            <!-- * NOTE If user is login already this signup will exchange to his/her username -->
+                            <div class=\"sign-up\">Sign In</div>
+                            <img src=\"../public/Account.png\" alt=\"\">
+                        </div>
+                    </a>";
+                }
+                ?>
+               
             </header>
         </div>
     </nav>
@@ -49,15 +78,49 @@
                 <form action="../shop/search/search_query.php" method="GET"> 
                     <input class="inp-search" type="text" name="user_search" placeholder="Search" required> 
                     <div class="image-container">
-                        <button type="submit" id="search-btn" style="background: none; border: none;"> 
-                            <img src="../public/loupe-1@2x.png" alt="Search icon">
-                        </button>
-                        <button type="button" id="favorite-btn" style="background: none; border: none;"> 
-                            <img src="../public/heart-1-1@2x.png" alt="Favorite icon">
-                        </button>
-                        <button type="button" id="cart-btn" style="background: none; border: none;"> 
-                            <img src="../public/market-1@2x.png" alt="Cart icon">
-                        </button>
+                        <?php 
+                         if (isset($_SESSION['account_id'])) {
+                            echo "
+                    
+                            <button type=\"submit\" id=\"search-btn\" style=\"background: none; border: none;\"> 
+                                <img src=\"../public/loupe-1@2x.png\" alt=\"Search icon\">
+                            </button>
+                            
+
+                            <a href=\"../account/my-wishlist/index.php\">
+                                <button type=\"button\" id=\"favorite-btn\" style=\"background: none; border: none;\"> 
+                                    <img src=\"../public/heart-1-1@2x.png\" alt=\"Favorite icon\">
+                                </button>
+                            </a>
+
+                            <a href=\"../account/my-order/index.php\">
+                                <button type=\"button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
+                                    <img src=\"../public/market-1@2x.png\" alt=\"Cart icon\">
+                                </button>
+                            </a>
+                            ";
+                        } else {
+                            echo " 
+                           
+                            <button type=\"submit\" id=\"search-btn\" style=\"background: none; border: none;\"> 
+                                <img src=\"../public/loupe-1@2x.png\" alt=\"Search icon\">
+                            </button>
+                           
+
+                            <a href=\"../authentication/account-sign-in.php\">
+                                <button type=\"button\" id=\"favorite-btn\" style=\"background: none; border: none;\"> 
+                                    <img src=\"../public/heart-1-1@2x.png\" alt=\"Favorite icon\">
+                                </button>
+                            </a>
+
+                            <a href=\"../authentication/account-sign-in.php\">
+                                <button type=\"button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
+                                    <img src=\"../public/market-1@2x.png\" alt=\"Cart icon\">
+                                </button>
+                            </a>
+                            ";
+                        }
+                        ?>
                     </div>
                 </form>
             </div>
@@ -94,7 +157,6 @@
 
                 <!-- TODO: Loop products here on php -->
                 <div class="product-container">
-
 
                     <div class="shoe-product-card">
                         <div class="shoe-img-container">
