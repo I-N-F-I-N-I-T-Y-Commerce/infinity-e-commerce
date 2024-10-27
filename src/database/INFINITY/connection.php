@@ -116,4 +116,9 @@ function calculate_discount($price) {
         return $price * 0.85;
     }
 }
+
+function get_product_information($product_id) {
+    
+}
+
 ?>
