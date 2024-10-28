@@ -32,9 +32,9 @@ function give_category($conn, $category_name) {
 function search_for($conn, $search_query) {
 
 
-    if ($search_query == 'sale') {
+    if ($search_query == 'sale' || $search_query == 'sales') {
         $query = "SELECT * FROM product WHERE is_on_sale = 1";
-        // return mysqli_query($conn, $query);
+        return mysqli_query($conn, $query);
 
 
     } else {

@@ -15,14 +15,215 @@
     gap: 125px;
 }
 
-.left-side-container {
+.customer-review-container {
+    width: var(--max-width);
     height: 500px;
+}
+
+.recommended-categorized-shoes-container {
+    width: var(--max-width);
+    height: 500px;
+}
+
+.left-side-container {
+    height: 510px;
     width: 405px;
-    background-color: aqua;
 }
 
 .right-side-container {
-    height: 500px;
+    height: 510px;
     width: 600px;
-    background-color:blueviolet;
+    border: 1px solid #696662;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#product-brand {
+    color: beige;
+    font-family: var(--font-boston-light);
+    margin-top: 20px;
+    margin-left: 50px;
+    font-size: 1.1rem;
+}
+
+#product-name {
+    color: beige;
+    font-family: var(--font-boston-bold);
+    margin-top: 15px;
+    margin-left: 50px;
+    font-size: 1.9rem;
+}
+
+.num-review-container {
+    display: flex;
+    margin-left: 50px;
+    gap: 13px;
+    align-items: center;
+}
+
+.num-review-container img {
+    width: 14px;
+    height: 14px;
+}
+
+.num-review-container span {
+    font-family: var(--font-boston-light);
+    color: #F6BC72;
+    font-family: var(--font-boston-light);
+    font-size: 1rem;
+}
+
+#product-price {
+    color: #F6BC72;
+    font-family: var(--font-boston-regular);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 50px;
+    font-size: 1.9rem;
+}
+
+#product-descri {
+    color: aliceblue;
+    font-family: var(--font-boston-light);
+    margin-left: 50px;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.product-description {
+    width: 485px;
+    height: 150px;
+    margin-left: 50px;
+    margin-top: 10px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+#description {
+    color: aliceblue;
+    font-family: var(--font-boston-light);
+    font-size: 1rem;
+    width: 485px;
+}
+
+.product-image-container {
+    width: 405px;
+    height: 330px;
+    overflow: hidden;
+}
+
+.product-image-container img {
+    width: 405px;
+    height: 330px;
+}
+
+.quanty-container {
+    height: 70px;
+    width: 405px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.container-increment {
+    height: 40px;
+    width: 40px;
+    border: 1px solid #F6BC72;
+    cursor: pointer;
+}
+
+.container-decrement {
+    height: 40px;
+    width: 40px;
+    border: 1px solid #F6BC72;
+    cursor: pointer;
+}
+
+.quanty-get {
+    height: 40px;
+    width: 120px;
+    border: 1px solid #F6BC72;
+    font-family: var(--font-boston-light);
+    font-size: 1.1rem;
+    color: aliceblue;
+}
+
+.container-decrement,
+.container-increment,
+.quanty-get,
+.quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity {
+    height: 40px;
+    width: 140px;
+    border: 1px solid #6CFACD;
+    font-family: var(--font-boston-light);
+    font-size: 1.1rem;
+    color: aliceblue;
+}
+
+.container-increment img {
+    width: 20px;
+}
+
+.container-decrement img {
+    width: 20px;
+    transform: rotate(-180deg);
+}
+
+.buy-container {
+    margin-top: 40px;
+    width: 405px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.buy-item {
+    width: 265px;
+    height: 50px;
+    border: 1px solid #F6BC72;
+    font-size: 1rem;
+    font-family: var(--font-boston-light);
+    color: #F6BC72;
+    cursor: pointer;
+}
+
+.add-to-cart {
+    width: 66px;
+    height: 50px;
+    border: 1px solid #F6BC72;
+    border-left: 0px solid transparent;
+    cursor: pointer;
+}
+
+.add-to-cart img {
+    width: 20px;
+}
+
+
+.add-to-wishlist {
+    width: 66px;
+    height: 50px;
+    border: 1px solid #F6BC72;
+    border-left: 0px solid transparent;
+    cursor: pointer;
+}
+
+.add-to-wishlist img {
+    width: 20px;
+}
+
+.buy-item,
+.add-to-cart,
+.add-to-wishlist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

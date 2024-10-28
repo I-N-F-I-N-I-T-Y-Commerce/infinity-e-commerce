@@ -1,5 +1,7 @@
 <?php
-include("C:/Users/Vince/Github-Haimonmon/infinity-e-commerce/src/database/INFINITY/connection.php");
+include("../../database/INFINITY/connection.php");
+
+
 session_start();
 
 $result = give_category($conn, 'Women');

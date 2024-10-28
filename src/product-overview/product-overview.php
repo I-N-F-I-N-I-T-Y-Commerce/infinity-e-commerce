@@ -1,5 +1,5 @@
 <?php
-include("C:/Users/Vince/Github-Haimonmon/infinity-e-commerce/src/database/INFINITY/connection.php");
+include("../database/INFINITY/connection.php");
 session_start();
 
 // $num_of_results = mysqli_num_rows($result);
@@ -23,7 +23,10 @@ if (isset($_GET['product_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Overview</title>
+    <?php 
+    echo "<title>INFINITY 👟 ". $result["shoe_name"] ."</title>"
+    ?>
+    <link rel="icon" href="../../public/logo_removebg_preview_q2J_icon.ico" sizes="16x16" type="image/x-icon">
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="../navigator/navigator.css">
     <link rel="stylesheet" href="../footer/footer.css">
@@ -142,12 +145,84 @@ if (isset($_GET['product_id'])) {
                 <!-- * upper section -->
                 <div class="product-description-container">
                         <div class="left-side-container">
+                            <div class="product-image-container">
+                                <?php 
+                                    echo " <img src=\"". $result["shoe_image"] ."\" alt=\"\">"
+                                ?>
+                                <img src="../public/Shoes/Group 60.png" alt="">
+                            </div>
 
+                            <div class="quanty-container">
+                                <div class="container-increment">
+                                   <img src="../public/downward-arrow.png" alt="">
+                                </div>
+                                <div class="quanty-get">
+                                    <span id="num-get">1</span>
+                                </div>
+                                <div class="container-decrement">
+                                    <img src="../public/downward-arrow.png" alt="">
+                                </div>
+                                
+                                <div class="quantity">
+                                    <?php 
+                                    echo "<span>". $result["quantity"] ."</span>"
+                                    ?>
+                                </div>
+                            </div>
+
+                            <div class="buy-container">
+                                <div class="buy-item">
+                                    <span>Buy Item</span>
+                                </div>
+                                <div class="add-to-cart">
+                                    <img src="../public/shopping-bag (1).png" alt="">
+                                </div>
+                                <div class="add-to-wishlist">
+                                    <img src="../public/heart (6).png" alt="">
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="right-side-container">
+                        <?php 
+                            echo "
+                                <div class=\"right-side-container\">
+                                    <span id=\"product-brand\">". $result["shoe_brand"] ."</span>
+                                    <span id=\"product-name\">". $result["shoe_name"] ."</span>
+                                    <div class=\"num-review-container\">
+                                        <img src=\"../public/star.png\" alt=\"\" class=\"star1\">
+                                        <img src=\"../public/star.png\" alt=\"\" class=\"star2\">
+                                        <img src=\"../public/star.png\" alt=\"\" class=\"star3\">
+                                        <img src=\"../public/star.png\" alt=\"\" class=\"star4\">
+                                        <img src=\"../public/star (3).png\" alt=\"\" class=\"star5\">
+                                        <span class=\"num-review\">0 Reviews</span>
+                                    </div>
+                                    <span id=\"product-price\"> ₱ ". number_format($result["shoe_price"],2) ."</span>
+                                    <span id=\"product-descri\">Product Description</span>
 
-                        </div>
+                                    <div class=\"product-description\">
+                                        <span id=\"description\">". $result["shoe_detail"] ."</span>
+                                    </div>
+                                </div>
+                            ";
+                        ?>
+                        <!-- <div class="right-side-container">
+                            <span id="product-brand">Nike</span>
+                            <span id="product-name">Climax Nike</span>
+                            <div class="num-review-container">
+                                <img src="../public/star.png" alt="" class="star1">
+                                <img src="../public/star.png" alt="" class="star2">
+                                <img src="../public/star.png" alt="" class="star3">
+                                <img src="../public/star.png" alt="" class="star4">
+                                <img src="../public/star (3).png" alt="" class="star5">
+                                <span class="num-review">42 Reviews</span>
+                            </div>
+                            <span id="product-price"> ₱ 1,200</span>
+                            <span id="product-descri">Product Description</span>
+
+                            <div class="product-description">
+                                <span id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab officia explicabo doloremque laudantium, nostrum quod. Autem exercitationem, ducimus eum dolorum possimus cum iure explicabo vel earum. Optio delectus qui ratione? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, quibusdam voluptatibus! Alias quas, tempore laudantium necessitatibus quam repellat aspernatur quia magnam minima, quaerat, eius omnis labore perspiciatis hic totam. Illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum maiores enim sequi accusamus ducimus quo provident sapiente illum quae aut temporibus consectetur, ipsam a, sed excepturi quis dolor. Dolorem, eos!</span>
+                            </div>
+                        </div> -->
                 </div>
                 <!-- * upper section -->
 

@@ -1,5 +1,6 @@
 <?php
-include("C:/Users/Vince/Github-Haimonmon/infinity-e-commerce/src/database/INFINITY/connection.php");
+include("../database/INFINITY/connection.php");
+
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['email'];
