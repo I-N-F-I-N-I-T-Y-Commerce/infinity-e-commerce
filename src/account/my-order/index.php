@@ -1,3 +1,17 @@
+<?php 
+include("../../database/INFINITY/connection.php");
+
+session_start();
+
+if (isset($_SESSION['account_id'])) {
+    $account_id = $_SESSION['account_id'];
+    $username = $_SESSION['username'];
+
+    echo "$account_id Successfuly";
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +84,13 @@
                                 <div class="account-profile-container">
                                     <img src="../../public/user-profile/Example User Profile.jpg" alt="">
                                 </div>
-                                <div class="account-username">John Paul-Bodino</div>
+                                <?php
+                                    if (isset($_SESSION['account_id'])) {
+                                        echo "<div class=\"account-username\">$username</div> ";
+                                    } else {
+                                        echo "<div class=\"account-username\">Guest</div> ";
+                                    }
+                                ?>
                             </div>
                             
                             <!-- * navigation box -->
@@ -104,11 +124,10 @@
                             <script src="../account.js"></script>
                         </div>
                     
-    
                     <div id="myOrder"  class="order-container">
-    
-                        <h1 class="mo-acc-status"><span>You have 1 Order</span>, John Paul-Bodino</h1>
-    
+                        <?php
+                            echo "<h1 class=\"mo-acc-status\"><span>You have 1 Order</span>, $username</h1>"
+                        ?>
                         <div class="mo-message-box">
                             <!-- * Product container -->
                             <div class="order-product-container">

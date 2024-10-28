@@ -140,24 +140,28 @@ if (isset($_SESSION['account_id'])) {
                 <img src="../public/HOME-BANNER1-IMG-0003.png" id="banner1-img4" alt="">
                 <h1><span id="banner-highlight2">Suite</span> Your <span id="banner-highlight1">Style</span></h1>
                 <h3>Choose a Classic Pair that does it all</h3>
-                <button>Shop</button>
+                <a href="../shop/sale/sale-footwear.php"><button>Shop</button></a>
             </div>
 
             <!-- TODO: Product in new Arrivals -->
             <div class="new-arrivals-container">
                 <div class="upper-container">
                     <h3>Shop In Style</h3>
-                    <div class="page-navigation">
-                        <div class="img-container">
-                                <img src="../public/ICON-NEXT-PAGE.png" alt="">
+                    <a href="../shop/new arrivals/new-arrivals.php">
+                        <div class="page-navigation">
+                            <div class="img-container">
+                                    <img src="../public/ICON-NEXT-PAGE.png" alt="">
+                            </div>
+                            <h3>Shop All New Arrivals</h3>
                         </div>
-                        <h3>Shop All New Arrivals</h3>
-                    </div>
+                    </a>
                 </div>
 
                 <!-- TODO: Loop products here on php -->
                 <div class="product-container">
-
+                    <?php
+                    
+                    ?>
                     <div class="shoe-product-card">
                         <div class="shoe-img-container">
                             <img src="../public/Shoes/Group 61.png" alt="">
@@ -218,7 +222,7 @@ if (isset($_SESSION['account_id'])) {
                     <div class="container1">
                         <h2>Sunny Pair's</h2>
                         <center><p>The Favorite Sun flower shoes is back and in Sales!.</p></center>
-                        <button>Shop</button>
+                        <a href="../product-overview/product-overview.php?product_id=21"><button>Shop</button></a>
                     </div>
             </div>
 
@@ -228,24 +232,35 @@ if (isset($_SESSION['account_id'])) {
                     <h1>- In The New Footwear -</h1>
                 </div>
                 <div class="categories">
+                   
                     <div class="men">
                         <img src="../public/HOME-IMG-MEN-0002.jpg" alt="">
-                        <div class="container">
-                            <h2>Men's <span class="highlight">Foot Wear</span></h2>
-                        </div>
+                        <a href="../shop/men/men-footwear.php">
+                            <div class="container">
+                                <h2>Men's <span class="highlight">Foot Wear</span></h2>
+                            </div>
+                        </a>
                     </div>
+                  
+
                     <div class="women">
                         <img src="../public/HOME-IMG-WOMEN-0001.jpg" alt="">
-                        <div class="container">
-                            <h2>Women's <span class="highlight">Foot Wear</span></h2>
-                        </div>
+                        <a href="../shop/women/women-footwear.php">
+                            <div class="container">
+                                <h2>Women's <span class="highlight">Foot Wear</span></h2>
+                            </div>
+                        </a>
                     </div>
+
                     <div class="kids">
                         <img src="../public/HOME-IMG-KIDS-0003.jpg" alt="">
-                        <div class="container">
-                            <h2>Kid's <span class="highlight">Foot Wear</span></h2>
-                        </div>            
+                        <a href="../shop/kids/kids-footwear.php">
+                            <div class="container">
+                                <h2>Kid's <span class="highlight">Foot Wear</span></h2>
+                            </div>
+                        </a>
                     </div>
+
                 </div>
             </div>
 
@@ -253,17 +268,23 @@ if (isset($_SESSION['account_id'])) {
                 <div class="image-container">
                     <img src="../public/HOME-BANNER3-IMAGE.png" alt="">
                     <div class="price-container">
-                        
+                        <img src="../public/Stary Night.png" id="product_name_stary" alt="">
+                        <?php 
+                            echo "<span id=\"stary-night-span\"> ₱ 1,256.00</span>";
+                        ?>
                     </div>
                     <img src="../public/Shoes/Group63.png" id="owo" alt="">
                 </div>
                 <div class="lower-container">
-                    <div class="page-navigation">
-                        <h3>Buy Stary Night Shoe</h3>
-                        <div class="img-container">
-                                <img src="../public/ICON-NEXT-PAGE.png" alt="">
+                    <a href="../product-overview/product-overview.php?product_id=5">
+                        <div class="page-navigation">
+                            <h3>Buy Stary Night Shoe</h3>
+                            <div class="img-container">
+                                    <img src="../public/ICON-NEXT-PAGE.png" alt="">
+                            </div>
                         </div>
-                    </div>
+                    </a>
+
                     <div class="painter-name">
                         <img src="../public/Van gogh.png" alt="">
                         <h1>NEW</h1>
@@ -364,7 +385,6 @@ if (isset($_SESSION['account_id'])) {
                 <!-- * container-3 -->
             </section>
         </div>
-
     </footer>
     
     <!-- * footer -->

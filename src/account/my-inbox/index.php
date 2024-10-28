@@ -1,3 +1,16 @@
+<?php 
+include("../../database/INFINITY/connection.php");
+
+session_start();
+
+if (isset($_SESSION['account_id'])) {
+    $account_id = $_SESSION['account_id'];
+    $username = $_SESSION['username'];
+
+    echo "$account_id Successfuly";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,7 +82,13 @@
                             <div class="account-profile-container">
                                 <img src="../../public/user-profile/Example User Profile.jpg" alt="">
                             </div>
-                            <div class="account-username">John Paul-Bodino</div>
+                            <?php
+                                if (isset($_SESSION['account_id'])) {
+                                    echo "<div class=\"account-username\">$username</div> ";
+                                } else {
+                                    echo "<div class=\"account-username\">Guest</div> ";
+                                }
+                            ?>
                         </div>
                         
                         <!-- * navigation box -->
@@ -103,7 +122,9 @@
                     </div>
 
                     <div id="myInbox"  class="inbox-container">
-                        <h1 class="mi-acc-status"><span>You have 0 Messages</span>, John Paul-Bodino</h1>
+                        <?php 
+                        echo "<h1 class=\"mi-acc-status\"><span>You have 0 Messages</span>, $username</h1>"
+                        ?>
                         <div class="mi-message-box">
                             <!-- * Automatic height adjustment activated  -->
                             <!-- <div class="message-container"></div>

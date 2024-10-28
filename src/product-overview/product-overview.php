@@ -26,7 +26,7 @@ if (isset($_GET['product_id'])) {
     <?php 
     echo "<title>INFINITY 👟 ". $result["shoe_name"] ."</title>"
     ?>
-    <link rel="icon" href="../../public/logo_removebg_preview_q2J_icon.ico" sizes="16x16" type="image/x-icon">
+    <link rel="icon" href="../public/logo_removebg_preview_q2J_icon.ico" sizes="16x16" type="image/x-icon">
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="../navigator/navigator.css">
     <link rel="stylesheet" href="../footer/footer.css">
@@ -183,7 +183,12 @@ if (isset($_GET['product_id'])) {
                             </div>
                         </div>
 
-                        <?php 
+                        <?php
+
+                        $original_price = $result["shoe_price"];
+                        $discounted_price = calculate_discount($original_price);
+                        
+                        if ($result['is_on_sale'] == 1) {
                             echo "
                                 <div class=\"right-side-container\">
                                     <span id=\"product-brand\">". $result["shoe_brand"] ."</span>
@@ -196,7 +201,7 @@ if (isset($_GET['product_id'])) {
                                         <img src=\"../public/star (3).png\" alt=\"\" class=\"star5\">
                                         <span class=\"num-review\">0 Reviews</span>
                                     </div>
-                                    <span id=\"product-price\"> ₱ ". number_format($result["shoe_price"],2) ."</span>
+                                    <span id=\"product-price\"> ₱ ". number_format($discounted_price,2) ."</span>
                                     <span id=\"product-descri\">Product Description</span>
 
                                     <div class=\"product-description\">
@@ -204,6 +209,28 @@ if (isset($_GET['product_id'])) {
                                     </div>
                                 </div>
                             ";
+                        } else {
+                            echo "
+                                <div class=\"right-side-container\">
+                                    <span id=\"product-brand\">". $result["shoe_brand"] ."</span>
+                                    <span id=\"product-name\">". $result["shoe_name"] ."</span>
+                                    <div class=\"num-review-container\">
+                                        <img src=\"../public/star.png\" alt=\"\" class=\"star1\">
+                                        <img src=\"../public/star.png\" alt=\"\" class=\"star2\">
+                                        <img src=\"../public/star.png\" alt=\"\" class=\"star3\">
+                                        <img src=\"../public/star.png\" alt=\"\" class=\"star4\">
+                                        <img src=\"../public/star (3).png\" alt=\"\" class=\"star5\">
+                                        <span class=\"num-review\">0 Reviews</span>
+                                    </div>
+                                    <span id=\"product-price\"> ₱ ". number_format($original_price,2) ."</span>
+                                    <span id=\"product-descri\">Product Description</span>
+
+                                    <div class=\"product-description\">
+                                        <span id=\"description\">". $result["shoe_detail"] ."</span>
+                                    </div>
+                                </div>
+                        ";
+                        }
                         ?>
                         <!-- <div class="right-side-container">
                             <span id="product-brand">Nike</span>

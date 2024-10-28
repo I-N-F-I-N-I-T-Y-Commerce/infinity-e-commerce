@@ -193,9 +193,8 @@ main .main-container {
 .shoe-product-card-special .price-container {
     width: 325px;
     height: 115px;
-    background-color: #040410;
+    background-color: rgba(34, 32, 31, 0.5); 
     margin-top: 40%;
-    opacity: 65%;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -484,8 +483,7 @@ main .main-container {
     height: 490px;
     position: absolute;
     left: 0;
-    opacity: 50%;
-    background-color: #22201F;
+    background-color: rgba(34, 32, 31, 0.5); 
     top: 0;
 }
 
@@ -499,3 +497,29 @@ main .main-container {
     cursor: pointer;
 }
 
+.upper-container a {
+    text-decoration: none;
+}
+
+.lower-container a {
+    text-decoration: none;
+}
+
+#product_name_stary {
+    position: absolute;
+    width: 240px;
+    top: 100px;
+    left: 40px;
+    opacity: 1;
+}
+
+#stary-night-span {
+    position: absolute;
+    width: 240px;
+    bottom: 100px;
+    left: 40px;
+    opacity: 1;
+    font-family: var(--font-boston-extra-light);
+    color: #F6BC72;
+    font-size: 1.8rem;
+}

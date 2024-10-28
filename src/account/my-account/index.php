@@ -167,7 +167,10 @@ if (isset($_SESSION['account_id'])) {
                         <div class="contact-info-container">
                             <div class="contact-info-content">
                                 <h2 class="contact-info">Contact Information</h2>
-                                <p class="ci-details">John Paul-Bodino | johnnynigg@gmail.com</p>
+                                <?php 
+                                    echo "<p class=\"ci-details\">". $username ." | johnny@gmail.com</p>"
+                                ?>
+                               
                                 <div class="contact-info-btns">
                                     <a href="#" class="edit-btn">Edit</a>
                                     <a href="#" class="changepwd-btn">Change Password</a>
