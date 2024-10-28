@@ -2,41 +2,42 @@
 include("C:/Users/Vince/Github-Haimonmon/infinity-e-commerce/src/database/INFINITY/connection.php");
 session_start();
 
-$result = give_category($conn, 'New');
-
-$num_of_results = mysqli_num_rows($result);
-
+// $num_of_results = mysqli_num_rows($result);
 if (isset($_SESSION['account_id'])) {
     $account_id = $_SESSION['account_id'];
     $username = $_SESSION['username'];
 
     echo "$account_id Successfuly";
 }
+
+if (isset($_GET['product_id'])) {
+    $product_id = $_GET['product_id'];
+
+    $result = get_product_information($conn, $product_id);
+}
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INFINITY 👟 New Arrival's</title>
-    <link rel="icon" href="../../public/logo_removebg_preview_q2J_icon.ico" sizes="16x16" type="image/x-icon">
-    <link rel="stylesheet" href="../products-page.css">
-    <link rel="stylesheet" href="../../global.css">
-    <link rel="stylesheet" href="../../navigator/navigator.css">
-    <link rel="stylesheet" href="../../footer/footer.css">
+    <title>Product Overview</title>
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../navigator/navigator.css">
+    <link rel="stylesheet" href="../footer/footer.css">
+    <link rel="stylesheet" href="product-overview.css">
 </head>
-
 <body>
-    <!-- * navigation -->
-    <nav class="main-container">
+     <!-- * navigation -->
+     <nav class="main-container">
         <div class="navigation-container">
             <header class="header">
-                <a href="../../home/index.php">
+                <a href="../home/index.php">
                     <div class="branding">
                         <div class="logo-container">
-                            <img class="logo-icon" loading="lazy" alt="" src="../../public/logo.svg" />
+                            <img class="logo-icon" loading="lazy" alt="" src="../public/logo.svg" />
                         </div>
                         <b class="tag-name">I N F I N I T Y</b>
                     </div>
@@ -44,20 +45,20 @@ if (isset($_SESSION['account_id'])) {
                 <?php
                 if (isset($_SESSION['account_id'])) {
                     echo " 
-                    <a href=\"../../account/my-account/index.php\">
+                    <a href=\"../account/my-account/index.php\">
                         <div class=\"account-container\">
                             <!-- * NOTE If user is login already this signup will exchange to his/her username -->
                             <div class=\"sign-up\">$username</div>
-                            <img src=\"../../public/Account.png\" alt=\"\">
+                            <img src=\"../public/Account.png\" alt=\"\">
                         </div>
                     </a>";
                 } else {
                     echo " 
-                    <a href=\"../../authentication/account-sign-in.php\">
+                    <a href=\"../authentication/account-sign-in.php\">
                         <div class=\"account-container\">
                             <!-- * NOTE If user is login already this signup will exchange to his/her username -->
                             <div class=\"sign-up\">Sign In</div>
-                            <img src=\"../../public/Account.png\" alt=\"\">
+                            <img src=\"../public/Account.png\" alt=\"\">
                         </div>
                     </a>";
                 }
@@ -68,15 +69,15 @@ if (isset($_SESSION['account_id'])) {
     <div class="navigational-container">
         <div class="navigator">
             <ul class="list-categories">
-                <li><a href="../new arrivals/new-arrivals.php">New & Featured</a></li>
-                <li><a href="../women/women-footwear.php">Women</a></li>
-                <li><a href="../men/men-footwear.php">Men</a></li>
-                <li><a href="../kids/kids-footwear.php">Kids</a></li>
-                <li><a href="../sale/sale-footwear.php">Sale</a></li>
+                <li><a href="../shop/new arrivals/new-arrivals.php">New & Featured</a></li>
+                <li><a href="../shop/women/women-footwear.php">Women</a></li>
+                <li><a href="../shop/men/men-footwear.php">Men</a></li>
+                <li><a href="../shop/kids/kids-footwear.php">Kids</a></li>
+                <li><a href="../shop/sale/sale-footwear.php">Sale</a></li>
             </ul>
     
             <div class="search-bar">
-                <form action="../search/search_query.php" method="GET"> 
+                <form action="../shop/search/search_query.php" method="GET">
                     <input class="inp-search" type="text" name="user_search" placeholder="Search" required> 
                     <div class="image-container">
                     <?php 
@@ -84,19 +85,19 @@ if (isset($_SESSION['account_id'])) {
                             echo "
                     
                             <button type=\"submit\" id=\"search-btn\" style=\"background: none; border: none;\"> 
-                                <img src=\"../../public/loupe-1@2x.png\" alt=\"Search icon\">
+                                <img src=\"../public/loupe-1@2x.png\" alt=\"Search icon\">
                             </button>
                             
 
-                            <a href=\"../../account/my-wishlist/index.php\">
+                            <a href=\"../account/my-wishlist/index.php\">
                                 <button type=\"button\" id=\"favorite-btn\" style=\"background: none; border: none;\"> 
-                                    <img src=\"../../public/heart-1-1@2x.png\" alt=\"Favorite icon\">
+                                    <img src=\"../public/heart-1-1@2x.png\" alt=\"Favorite icon\">
                                 </button>
                             </a>
 
-                            <a href=\"../../account/my-order/index.php\">
+                            <a href=\"../account/my-order/index.php\">
                                 <button type=\"button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
-                                    <img src=\"../../public/market-1@2x.png\" alt=\"Cart icon\">
+                                    <img src=\"../public/market-1@2x.png\" alt=\"Cart icon\">
                                 </button>
                             </a>
                             ";
@@ -104,19 +105,19 @@ if (isset($_SESSION['account_id'])) {
                             echo " 
                            
                             <button type=\"submit\" id=\"search-btn\" style=\"background: none; border: none;\"> 
-                                <img src=\"../../public/loupe-1@2x.png\" alt=\"Search icon\">
+                                <img src=\"../public/loupe-1@2x.png\" alt=\"Search icon\">
                             </button>
                            
 
-                            <a href=\"../../authentication/account-sign-in.php\">
+                            <a href=\"../authentication/account-sign-in.php\">
                                 <button type=\"button\" id=\"favorite-btn\" style=\"background: none; border: none;\"> 
-                                    <img src=\"../../public/heart-1-1@2x.png\" alt=\"Favorite icon\">
+                                    <img src=\"../public/heart-1-1@2x.png\" alt=\"Favorite icon\">
                                 </button>
                             </a>
 
-                            <a href=\"../../authentication/account-sign-in.php\">
+                            <a href=\"../authentication/account-sign-in.php\">
                                 <button type=\"button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
-                                    <img src=\"../../public/market-1@2x.png\" alt=\"Cart icon\">
+                                    <img src=\"../public/market-1@2x.png\" alt=\"Cart icon\">
                                 </button>
                             </a>
                             ";
@@ -128,84 +129,48 @@ if (isset($_SESSION['account_id'])) {
         </div>
     </div>
     <!-- * navigation -->
-    
 
-    <!-- * Main Container -->
+    <!-- <?php
+        echo "<h1>" . $result['shoe_name'] . "</h1>";  
+    ?> -->
+
     <main>
         <div class="main-container">
-            <div class="category-welcome">
-                <h1>New <span class="highlight2">Arrival's</span></h1>
-                <center><p>From  <span class="highlight2">Aesthetic</span> to new releases and limited Editions, our most-popular shoes and clothing styles are <span class="highlight1">ready to shop.</span></p></center>
-            </div>
+            <div class="product-container">
 
-            <div class="results-container">
-                <div class="num-results">
-                    <?php 
-                        echo "<p> $num_of_results <span class=\"highlight2\">Results</span></p>";
-                    ?>
+
+                <!-- * upper section -->
+                <div class="product-description-container">
+                        <div class="left-side-container">
+
+                        </div>
+
+                        <div class="right-side-container">
+
+                        </div>
                 </div>
+                <!-- * upper section -->
 
-                <div class="dropdown-results">
-                    <p>Sort By: <span class="highlight2">Position</span></p>
-                    <img src="../../public/downward-arrow.png" alt="">
+
+
+                <!-- * middle section  -->
+                <div class="customer-review-container">
+
                 </div>
+                <!-- * middle section  -->
+
+
+                
+                <!-- * lower part section  -->
+                <div class="recommended-categorized-shoes-container">
+
+                </div>
+                <!-- * lower part section  -->
+                
+
             </div>
-
-            <!-- TODO: Main Product Display | Use PHP for displaying product cards in each using for loop -->
-            <div class="product-display">
-                <?php 
-                    if ($num_of_results > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-
-                            $posted_expiration_date = is_new($row["posted_date"]);
-                            $is_limited = $row["is_limited"];
-
-                            if ($is_limited == 1) {
-                                $container_status = 'limited';
-                                $product_status = 'Limited Edition';
-                            } else {
-                                $container_status = 'new';
-                                $product_status = 'New';
-                            }
-
-                            if (date("Y-m-d") <= $posted_expiration_date || $is_limited == 1) {
-                                echo '
-                                <a href="../../product-overview/product-overview.php?product_id='. $row["product_id"]  .'">
-                                    <div class="product-card">
-                                        <div class="shoe-image-container">
-                                            <img src="'. $row["shoe_image"] .'" alt="">
-                                            <div class="shoe-price-name-detail-container">
-                                                <div class="shoe-name-container">
-                                                    <span>'. $row["shoe_name"] .'</span>
-                                                </div>
-                                                <div class="price-status-container">
-                                                    <div class="shoe-price-container">
-                                                        <span>₱ '. $row["shoe_price"] .'</span>
-                                                    </div>
-                                                    <div class="shoe-status '.$container_status.'">
-                                                        <span>'. $product_status .'</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="add-to-cart-container">
-                                                <img src="../../public/shopping-bag (1).png" id="add-to-cart"  alt="">
-                                                <img src="../../public/heart (6).png" id="wishlist" class="add-to-favorites" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                ';
-                            }
-
-                            
-                        }
-                    }
-                    ?>
-            </div>
-            <!-- TODO: Main Product Display  -->
         </div>
     </main>
-    <!-- * Main Container -->
 
 
     <!-- * footer -->
@@ -223,7 +188,7 @@ if (isset($_SESSION['account_id'])) {
                             Events
                         </span>
                     </div>
-                    <img class="soc-med-icons" loading="lazy" alt="" src="../../public/soc-med-pages.svg" />
+                    <img class="soc-med-icons" loading="lazy" alt="" src="../public/soc-med-pages.svg" />
                 </div>
                 <!-- * container-1 -->
 
@@ -287,7 +252,7 @@ if (isset($_SESSION['account_id'])) {
                 <!-- * container-3 -->
                 <div class="cookie-policy-wrapper">
                     <div class="cookie-policy">Cookie Policy</div>
-                    <img class="cookie-icon" loading="lazy" alt="" src="../../public/cookie-1@2x.png" />
+                    <img class="cookie-icon" loading="lazy" alt="" src="../public/cookie-1@2x.png" />
                 </div>
                 <!-- * container-3 -->
             </section>
@@ -296,7 +261,5 @@ if (isset($_SESSION['account_id'])) {
     </footer>
     
     <!-- * footer -->
-
 </body>
-
 </html>

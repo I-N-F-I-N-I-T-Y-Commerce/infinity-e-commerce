@@ -1,0 +1,28 @@
+
+
+.product-container {
+    height: auto;
+    width: var(--max-width);
+    max-width: var(--max-width);
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.product-description-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 125px;
+}
+
+.left-side-container {
+    height: 500px;
+    width: 405px;
+    background-color: aqua;
+}
+
+.right-side-container {
+    height: 500px;
+    width: 600px;
+    background-color:blueviolet;
+}
