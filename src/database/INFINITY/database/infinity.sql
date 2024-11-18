@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2024 at 06:30 PM
+-- Generation Time: Nov 17, 2024 at 09:12 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,7 +42,9 @@ INSERT INTO `account` (`account_id`, `username`, `user_password`, `user_email`) 
 (2, 'wilson', '$2y$10$an1Y/bbisydduoprgbKYqO9IMgykg9IanVskvlIk5o3LcwYVoSHk.', 'wilsonesmabe029'),
 (4, 'haimonmon', '$2y$10$M38DfSWDabJ3N7RrEmftC.FfMGYVKinPWM.Wela9r4l1ImR6oEgd.', 'vincerepo'),
 (6, 'laroro', '$2y$10$iqOdQsJJgQoxqoEYtK0NwuZoGcx/2qaEAmrMRsGK4yQJIY5SLy2Ym', 'vinceowo'),
-(7, 'gargamel', '$2y$10$VF/9p6paxrFSR9DaITAB0elErFsbE/EyBvdhKO8b7JLZNO6Oykru6', 'gargamel789@gmail.com');
+(7, 'gargamel', '$2y$10$VF/9p6paxrFSR9DaITAB0elErFsbE/EyBvdhKO8b7JLZNO6Oykru6', 'gargamel789@gmail.com'),
+(8, 'Paimon', '$2y$10$M5zhC9IX8/Js5coBUbVV/.Dc5vBTtZA3Redd06K7RaHwSQ9pM3po.', 'paimon@gmail.com'),
+(9, 'jhondoe', '$2y$10$s12Eux9nqmGmRwyt6noAMekiV7gBS30/XbajOrKBJgHOtMYLn656S', 'johndoe@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -56,6 +58,13 @@ CREATE TABLE `admin` (
   `password` varchar(225) NOT NULL,
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `username`, `password`, `email`) VALUES
+(1, 'adminakohehe', '$2y$10$4OXDDs9U1ndcEP37RxDwBOEa.5Ns/niYCTy/g6rFWD1aOXcMcHzQi', 'infinity_yolo@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -187,7 +196,8 @@ CREATE TABLE `user` (
 CREATE TABLE `wishlist` (
   `wishlist_id` int(6) NOT NULL,
   `user_id` int(6) NOT NULL,
-  `product_id` int(6) NOT NULL
+  `product_id` int(6) NOT NULL,
+  `liked` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -261,13 +271,13 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `account_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `admin_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cart`

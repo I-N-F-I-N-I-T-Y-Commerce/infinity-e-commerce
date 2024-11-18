@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
             <!-- * Put the php file here in ` action ` attribute -->
             <form action="" method="POST">
-                <label for="email">Email</label><br>
+                <label for="email">Username</label><br>
                 <input type="text"  class="correct" autocomplete="email" name="email"><br>
                 
                 <label for="password" id="password">Password</label><br>

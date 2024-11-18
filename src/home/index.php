@@ -269,7 +269,7 @@ if (isset($_SESSION['account_id'])) {
                     <img src="../public/HOME-BANNER3-IMAGE.png" alt="">
                     <div class="price-container">
                         <img src="../public/Stary Night.png" id="product_name_stary" alt="">
-                        <?php 
+                        <?php
                             echo "<span id=\"stary-night-span\"> ₱ 1,256.00</span>";
                         ?>
                     </div>

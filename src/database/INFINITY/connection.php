@@ -1,4 +1,5 @@
 <?php
+
 $servername = "localhost";
 $username = "root"; 
 $password = ""; 
@@ -8,12 +9,20 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
+
+include('../../components/render-product/render.php');
 
 function give_category($conn, $category_name) {
 
     if ($category_name == 'New') {
-        $query = "SELECT * FROM product";
+        $query = "SELECT * FROM product WHERE (posted_date >= CURDATE() - INTERVAL 5 DAY)";
+
+        return mysqli_query($conn, $query);
+    }
+
+    if ($category_name == 'New and Limited') {
+        $query = "SELECT * FROM product WHERE (posted_date >= CURDATE() - INTERVAL 5 DAY) OR is_limited = 1";
 
         return mysqli_query($conn, $query);
     }
@@ -24,6 +33,7 @@ function give_category($conn, $category_name) {
         return mysqli_query($conn, $query);
     }
 
+    // * Kids, Men, Women
     $query = "SELECT * FROM product WHERE category = '$category_name'";
 
     return mysqli_query($conn, $query);
@@ -58,7 +68,7 @@ function is_new($posted_date) {
  */
 function check_status($row) {
     $posted_date = $row["posted_date"];
-    $posted_expiration_date = is_new($row["posted_date"]);
+    $posted_expiration_date = is_new($posted_date);
 
     // * Both Limited and On Sales
     if ($row["is_limited"] == 1 && $row["is_on_sale"] == 1) {

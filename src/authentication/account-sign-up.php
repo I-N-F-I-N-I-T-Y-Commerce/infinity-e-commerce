@@ -18,18 +18,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $formData['email'];
         $password = password_hash($formData['password'], PASSWORD_DEFAULT);
 
-        // Use the data as needed, e.g., insert into database, etc.
-        // echo "<h1 style='color:white'>Hello $firstName $lastName $password</h1>";
-    }
+        $accountSql =  "INSERT INTO account (username, user_password, user_email) 
+            VALUES ('$userName', '$password', '$email')";
+      
+        if ($conn->query($accountSql) === TRUE) {
+            $account_id = $conn->insert_id;
 
-    $sql = "INSERT INTO account (username, user_password, user_email) VALUES ('$userName', '$password', '$email')";
+            $userSql = "INSERT INTO user (account_id, first_name, last_name, contact_number, address) 
+                VALUES ('$account_id', '$firstName', '$lastName', '$contactNum', '$locationAddress')";
 
-    if ($conn->query($sql) === TRUE) {
-        header("Location: ./account-sign-in.php");
-        exit(); // Make sure to stop further script execution
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+            if ($conn->query($userSql) === TRUE) {
+                header("Location: ./account-sign-in.php");
+                exit(); // Make sure to stop further script execution
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        } else {
+            echo "Error Inserting into user table: ". $conn->error;
+        }
+    } 
 
     $conn->close();
 }

@@ -3,7 +3,7 @@ include("../../database/INFINITY/connection.php");
 
 session_start();
 
-$result = give_category($conn, 'New');
+$result = give_category($conn, 'New and Limited');
 
 $num_of_results = mysqli_num_rows($result);
 
@@ -155,53 +155,8 @@ if (isset($_SESSION['account_id'])) {
             <!-- TODO: Main Product Display | Use PHP for displaying product cards in each using for loop -->
             <div class="product-display">
                 <?php 
-                    if ($num_of_results > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-
-                            $posted_expiration_date = is_new($row["posted_date"]);
-                            $is_limited = $row["is_limited"];
-
-                            if ($is_limited == 1) {
-                                $container_status = 'limited';
-                                $product_status = 'Limited Edition';
-                            } else {
-                                $container_status = 'new';
-                                $product_status = 'New';
-                            }
-
-                            if (date("Y-m-d") <= $posted_expiration_date || $is_limited == 1) {
-                                echo '
-                                <a href="../../product-overview/product-overview.php?product_id='. $row["product_id"]  .'">
-                                    <div class="product-card">
-                                        <div class="shoe-image-container">
-                                            <img src="'. $row["shoe_image"] .'" alt="">
-                                            <div class="shoe-price-name-detail-container">
-                                                <div class="shoe-name-container">
-                                                    <span>'. $row["shoe_name"] .'</span>
-                                                </div>
-                                                <div class="price-status-container">
-                                                    <div class="shoe-price-container">
-                                                        <span>₱ '. $row["shoe_price"] .'</span>
-                                                    </div>
-                                                    <div class="shoe-status '.$container_status.'">
-                                                        <span>'. $product_status .'</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="add-to-cart-container">
-                                                <img src="../../public/shopping-bag (1).png" id="add-to-cart"  alt="">
-                                                <img src="../../public/heart (6).png" id="wishlist" class="add-to-favorites" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                ';
-                            }
-
-                            
-                        }
-                    }
-                    ?>
+                    render($num_of_results, $result); 
+                ?>
             </div>
             <!-- TODO: Main Product Display  -->
         </div>
