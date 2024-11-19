@@ -1,5 +1,6 @@
 <?php
 include("../database/INFINITY/connection.php");
+include("../components/render-product/render.php");
 session_start();
 
 // $num_of_results = mysqli_num_rows($result);
@@ -98,11 +99,11 @@ if (isset($_GET['product_id'])) {
                                 </button>
                             </a>
 
-                            <a href=\"../account/my-order/index.php\">
-                                <button type=\"button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
-                                    <img src=\"../public/market-1@2x.png\" alt=\"Cart icon\">
-                                </button>
-                            </a>
+                          
+                            <button type=\"button\" class=\"cart-button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
+                                <img src=\"../public/market-1@2x.png\" alt=\"Cart icon\">
+                            </button>
+                            
                             ";
                         } else {
                             echo " 
@@ -118,16 +119,105 @@ if (isset($_GET['product_id'])) {
                                 </button>
                             </a>
 
-                            <a href=\"../authentication/account-sign-in.php\">
-                                <button type=\"button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
-                                    <img src=\"../public/market-1@2x.png\" alt=\"Cart icon\">
-                                </button>
-                            </a>
+                            <button type=\"button\" class=\"cart-button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
+                                <img src=\"../public/market-1@2x.png\" alt=\"Cart icon\">
+                            </button>
                             ";
                         }
                         ?>
                     </div>
                 </form>
+
+                <div class="popper not-visible">
+                    <div class="cart-container">
+                        <div class="cart-header">
+                            <h2>Total Price: ₱ 768,324.00 </h2>
+                            <div class="block"></div>
+                        </div>
+                        <div class="cart-items">
+                            <!-- Cart Item 1 -->
+                            <div class="cart-item">
+                                <div class="item-quantity">
+                                    <button class="left">+</button>
+                                    <span>2</span>
+                                    <button class="right">-</button>
+                                </div>
+                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
+                                <div class="item-details">
+                                    <h3>The Berry Good Days</h3>
+                                    <p>₱ 2,978</p>
+                                </div>
+                            </div>
+                            <!-- Cart Item 2 -->
+                            <div class="cart-item">
+                                <div class="item-quantity">
+                                    <button class="left">+</button>
+                                    <span>3</span>
+                                    <button class="right">-</button>
+                                </div>
+                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
+                                <div class="item-details">
+                                    <h3>The Berry Good Days</h3>
+                                    <p>₱ 2,978</p>
+                                </div>
+                            </div>
+                            <!-- Cart Item 3 -->
+                            <div class="cart-item">
+                                <div class="item-quantity">
+                                    <button class="left">+</button>
+                                    <span>4</span>
+                                    <button class="right">-</button>
+                                </div>
+                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
+                                <div class="item-details">
+                                    <h3>The Berry Good Days</h3>
+                                    <p>₱ 2,978</p>
+                                </div>
+                            </div>
+
+                            <div class="cart-item">
+                                <div class="item-quantity">
+                                    <button class="left">+</button>
+                                    <span>2</span>
+                                    <button class="right">-</button>
+                                </div>
+                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
+                                <div class="item-details">
+                                    <h3>The Berry Good Days</h3>
+                                    <p>₱ 2,978</p>
+                                </div>
+                            </div>
+
+                            <div class="cart-item">
+                                <div class="item-quantity">
+                                    <button class="left">+</button>
+                                    <span>2</span>
+                                    <button class="right">-</button>
+                                </div>
+                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
+                                <div class="item-details">
+                                    <h3>The Berry Good Days</h3>
+                                    <p>₱ 2,978</p>
+                                </div>
+                            </div>
+
+                            <div class="cart-item">
+                                <div class="item-quantity">
+                                    <button class="left">+</button>
+                                    <span>2</span>
+                                    <button class="right">-</button>
+                                </div>
+                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
+                                <div class="item-details">
+                                    <h3>The Berry Good Days</h3>
+                                    <p>₱ 2,978</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -141,137 +231,56 @@ if (isset($_GET['product_id'])) {
         <div class="main-container">
             <div class="product-container">
 
-
                 <!-- * upper section -->
                 <div class="product-description-container">
-                        <div class="left-side-container">
-                            <div class="product-image-container">
-                                <?php 
-                                    echo " <img src=\"". $result["shoe_image"] ."\" alt=\"\">"
-                                ?>
-                                <img src="../public/Shoes/Group 60.png" alt="">
-                            </div>
-
-                            <div class="quanty-container">
-                                <div class="container-increment">
-                                   <img src="../public/downward-arrow.png" alt="">
-                                </div>
-                                <div class="quanty-get">
-                                    <span id="num-get">1</span>
-                                </div>
-                                <div class="container-decrement">
-                                    <img src="../public/downward-arrow.png" alt="">
-                                </div>
-                                
-                                <div class="quantity">
-                                    <?php 
-                                    echo "<span>". $result["quantity"] ."</span>"
-                                    ?>
-                                </div>
-                            </div>
-
-                            <div class="buy-container">
-                                <div class="buy-item">
-                                    <span>Buy Item</span>
-                                </div>
-                                <div class="add-to-cart">
-                                    <img src="../public/shopping-bag (1).png" alt="">
-                                </div>
-                                <div class="add-to-wishlist">
-                                    <img src="../public/heart (6).png" alt="">
-                                </div>
-                            </div>
-                        </div>
-
                         <?php
-
-                        $original_price = $result["shoe_price"];
-                        $discounted_price = calculate_discount($original_price);
-                        
-                        if ($result['is_on_sale'] == 1) {
-                            echo "
-                                <div class=\"right-side-container\">
-                                    <span id=\"product-brand\">". $result["shoe_brand"] ."</span>
-                                    <span id=\"product-name\">". $result["shoe_name"] ."</span>
-                                    <div class=\"num-review-container\">
-                                        <img src=\"../public/star.png\" alt=\"\" class=\"star1\">
-                                        <img src=\"../public/star.png\" alt=\"\" class=\"star2\">
-                                        <img src=\"../public/star.png\" alt=\"\" class=\"star3\">
-                                        <img src=\"../public/star.png\" alt=\"\" class=\"star4\">
-                                        <img src=\"../public/star (3).png\" alt=\"\" class=\"star5\">
-                                        <span class=\"num-review\">0 Reviews</span>
-                                    </div>
-                                    <span id=\"product-price\"> ₱ ". number_format($discounted_price,2) ."</span>
-                                    <span id=\"product-descri\">Product Description</span>
-
-                                    <div class=\"product-description\">
-                                        <span id=\"description\">". $result["shoe_detail"] ."</span>
-                                    </div>
-                                </div>
-                            ";
-                        } else {
-                            echo "
-                                <div class=\"right-side-container\">
-                                    <span id=\"product-brand\">". $result["shoe_brand"] ."</span>
-                                    <span id=\"product-name\">". $result["shoe_name"] ."</span>
-                                    <div class=\"num-review-container\">
-                                        <img src=\"../public/star.png\" alt=\"\" class=\"star1\">
-                                        <img src=\"../public/star.png\" alt=\"\" class=\"star2\">
-                                        <img src=\"../public/star.png\" alt=\"\" class=\"star3\">
-                                        <img src=\"../public/star.png\" alt=\"\" class=\"star4\">
-                                        <img src=\"../public/star (3).png\" alt=\"\" class=\"star5\">
-                                        <span class=\"num-review\">0 Reviews</span>
-                                    </div>
-                                    <span id=\"product-price\"> ₱ ". number_format($original_price,2) ."</span>
-                                    <span id=\"product-descri\">Product Description</span>
-
-                                    <div class=\"product-description\">
-                                        <span id=\"description\">". $result["shoe_detail"] ."</span>
-                                    </div>
-                                </div>
-                        ";
-                        }
+                            renderProduct($conn, $result);
                         ?>
-                        <!-- <div class="right-side-container">
-                            <span id="product-brand">Nike</span>
-                            <span id="product-name">Climax Nike</span>
-                            <div class="num-review-container">
-                                <img src="../public/star.png" alt="" class="star1">
-                                <img src="../public/star.png" alt="" class="star2">
-                                <img src="../public/star.png" alt="" class="star3">
-                                <img src="../public/star.png" alt="" class="star4">
-                                <img src="../public/star (3).png" alt="" class="star5">
-                                <span class="num-review">42 Reviews</span>
-                            </div>
-                            <span id="product-price"> ₱ 1,200</span>
-                            <span id="product-descri">Product Description</span>
-
-                            <div class="product-description">
-                                <span id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab officia explicabo doloremque laudantium, nostrum quod. Autem exercitationem, ducimus eum dolorum possimus cum iure explicabo vel earum. Optio delectus qui ratione? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, quibusdam voluptatibus! Alias quas, tempore laudantium necessitatibus quam repellat aspernatur quia magnam minima, quaerat, eius omnis labore perspiciatis hic totam. Illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum maiores enim sequi accusamus ducimus quo provident sapiente illum quae aut temporibus consectetur, ipsam a, sed excepturi quis dolor. Dolorem, eos!</span>
-                            </div>
-                        </div> -->
                 </div>
                 <!-- * upper section -->
-
 
 
                 <!-- * middle section  -->
                 <div class="customer-review-container">
-
+                        <?php
+                            renderProductRating($conn, $result)
+                        ?>
                 </div>
                 <!-- * middle section  -->
 
 
-                
+
                 <!-- * lower part section  -->
                 <div class="recommended-categorized-shoes-container">
+                    <?php
+                       $link_category = strtolower($result['category']);
 
+                        echo "<a href=\"../shop/$link_category/$link_category-footwear.php\">
+                            <div class=\"page-navigation\">
+                                    <h3>See all other <span class=\"highlight\">" . $result['category'] . "</span> Shoes</h3>
+                                <div class=\"img-container\">
+                                        <img src=\"../public/ICON-NEXT-PAGE.png\" alt=\"\">
+                                </div>
+                            </div>
+                        </a>";
+                    ?>
+                    <div class="suggested-product">
+                        <?php
+                            $result = giveSuggestedProductCategory($conn, $result['category'], $result['product_id']);
+
+                            $num_of_results = mysqli_num_rows($result);
+
+                            renderSuggestedProducs($conn, $num_of_results, $result);
+                        ?>
+                    </div>
                 </div>
                 <!-- * lower part section  -->
                 
-
             </div>
         </div>
+        <script src="../components/like/like.js"></script>
+        <script src="../components/rating/rating.js"></script>
+        <script src="../navigator/navigator.js"></script>
     </main>
 
 

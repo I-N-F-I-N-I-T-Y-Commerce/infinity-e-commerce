@@ -1,9 +1,11 @@
 <?php
 include("../../database/INFINITY/connection.php");
+include('../../components/render-product/render.php');
 
 session_start();
 
-$result = give_category($conn, 'Sales');
+$category = 'Sales';
+$result = give_category($conn, $category);
 
 $num_of_results = mysqli_num_rows($result);
 
@@ -97,11 +99,9 @@ if (isset($_SESSION['account_id'])) {
                                 </button>
                             </a>
 
-                            <a href=\"../../account/my-order/index.php\">
-                                <button type=\"button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
+                                <button type=\"button\" id=\"cart-btn\" class=\"cart-button\" style=\"background: none; border: none;\"> 
                                     <img src=\"../../public/market-1@2x.png\" alt=\"Cart icon\">
                                 </button>
-                            </a>
                             ";
                         } else {
                             echo " 
@@ -117,16 +117,106 @@ if (isset($_SESSION['account_id'])) {
                                 </button>
                             </a>
 
-                            <a href=\"../../authentication/account-sign-in.php\">
-                                <button type=\"button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
+                                <button type=\"button\" id=\"cart-btn\" class=\"cart-button\" style=\"background: none; border: none;\"> 
                                     <img src=\"../../public/market-1@2x.png\" alt=\"Cart icon\">
                                 </button>
-                            </a>
+                            
                             ";
                         }
                         ?>
                     </div>
                 </form>
+
+                <div class="popper not-visible">
+                    <div class="cart-container">
+                        <div class="cart-header">
+                            <h2>Total Price: ₱ 768,324.00 </h2>
+                            <div class="block"></div>
+                        </div>
+                        <div class="cart-items">
+                            <!-- Cart Item 1 -->
+                            <div class="cart-item">
+                                <div class="item-quantity">
+                                    <button class="left">+</button>
+                                    <span>2</span>
+                                    <button class="right">-</button>
+                                </div>
+                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
+                                <div class="item-details">
+                                    <h3>The Berry Good Days</h3>
+                                    <p>₱ 2,978</p>
+                                </div>
+                            </div>
+                            <!-- Cart Item 2 -->
+                            <div class="cart-item">
+                                <div class="item-quantity">
+                                    <button class="left">+</button>
+                                    <span>3</span>
+                                    <button class="right">-</button>
+                                </div>
+                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
+                                <div class="item-details">
+                                    <h3>The Berry Good Days</h3>
+                                    <p>₱ 2,978</p>
+                                </div>
+                            </div>
+                            <!-- Cart Item 3 -->
+                            <div class="cart-item">
+                                <div class="item-quantity">
+                                    <button class="left">+</button>
+                                    <span>4</span>
+                                    <button class="right">-</button>
+                                </div>
+                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
+                                <div class="item-details">
+                                    <h3>The Berry Good Days</h3>
+                                    <p>₱ 2,978</p>
+                                </div>
+                            </div>
+
+                            <div class="cart-item">
+                                <div class="item-quantity">
+                                    <button class="left">+</button>
+                                    <span>2</span>
+                                    <button class="right">-</button>
+                                </div>
+                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
+                                <div class="item-details">
+                                    <h3>The Berry Good Days</h3>
+                                    <p>₱ 2,978</p>
+                                </div>
+                            </div>
+
+                            <div class="cart-item">
+                                <div class="item-quantity">
+                                    <button class="left">+</button>
+                                    <span>2</span>
+                                    <button class="right">-</button>
+                                </div>
+                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
+                                <div class="item-details">
+                                    <h3>The Berry Good Days</h3>
+                                    <p>₱ 2,978</p>
+                                </div>
+                            </div>
+
+                            <div class="cart-item">
+                                <div class="item-quantity">
+                                    <button class="left">+</button>
+                                    <span>2</span>
+                                    <button class="right">-</button>
+                                </div>
+                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
+                                <div class="item-details">
+                                    <h3>The Berry Good Days</h3>
+                                    <p>₱ 2,978</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -157,11 +247,13 @@ if (isset($_SESSION['account_id'])) {
             <!-- TODO: Main Product Display | Use PHP for displaying product cards in each using for loop -->
             <div class="product-display">
             <?php 
-                 render($num_of_results, $result);
+                 render($conn, $num_of_results, $result);
                 ?>
             </div>
             <!-- TODO: Main Product Display  -->
         </div>
+        <script src="../../components/like/like.js"></script>
+        <script src="../../navigator/navigator.js"></script>
     </main>
     <!-- * Main Container -->
 

@@ -1,6 +1,6 @@
 <?php 
 include("../../database/INFINITY/connection.php");
-
+include("../../components/render-product/render.php");
 
 session_start();
 
@@ -162,76 +162,13 @@ if (isset($_SESSION['account_id'])) {
             <!-- TODO: Main Product Display | Use PHP for displaying product cards in each using for loop -->
             <div class="product-display">
                 <?php 
-                    if ($num_of_results > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-
-                            $status = check_status($row);
-
-                            $original_price = $row['shoe_price'];
-                            $discounted_price = calculate_discount($original_price);
-
-                            if ($status['shoe_status'] === 'sale') {
-                                echo '
-                                <a href="../../product-overview/product-overview.php?product_id='. $row["product_id"]  .'">
-                                    <div class="product-card">
-                                        <div class="shoe-image-container">
-                                            <img src="'. $row["shoe_image"] .'" alt="">
-                                            <div class="shoe-price-name-detail-container">
-                                                <div class="shoe-name-container">
-                                                    <span>'. $row["shoe_name"] .'</span>
-                                                </div>
-                                                <div class="price-status-container">
-                                                    <div class="shoe-price-container">
-                                                        <span class = "original-price-crossing">₱ '. number_format($original_price,2) .'</span>
-                                                        <span>₱ '. number_format($discounted_price,2) .'</span>
-                                                    </div>
-                                                    <div class="shoe-status '. $status['shoe_status'] .'">
-                                                        <span> '. $status['shoe_status_pan'] .'</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="add-to-cart-container">
-                                                <img src="../../public/shopping-bag (1).png" id="add-to-cart"  alt="">
-                                                <img src="../../public/heart (6).png" id="wishlist" class="add-to-favorites" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                ';
-                            } else {
-                                echo '
-                                <a href="../../product-overview/product-overview.php?product_id='. $row["product_id"]  .'">
-                                    <div class="product-card">
-                                        <div class="shoe-image-container">
-                                            <img src="'. $row["shoe_image"] .'" alt="">
-                                            <div class="shoe-price-name-detail-container">
-                                                <div class="shoe-name-container">
-                                                    <span>'. $row["shoe_name"] .'</span>
-                                                </div>
-                                                <div class="price-status-container">
-                                                    <div class="shoe-price-container">
-                                                        <span>₱ '. $row["shoe_price"] .'</span>
-                                                    </div>
-                                                    <div class="shoe-status '. $status['shoe_status'] .'">
-                                                        <span> '. $status['shoe_status_pan'] .'</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="add-to-cart-container">
-                                                <img src="../../public/shopping-bag (1).png" id="add-to-cart"  alt="">
-                                                <img src="../../public/heart (6).png" id="wishlist" class="add-to-favorites" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                ';
-                            }
-                        }
-                    }
-                    ?>
+                    render($conn, $num_of_results, $result);
+                ?>
                 </div>
             <!-- TODO: Main Product Display  -->
         </div>
+        <script src="../../components/like/like.js"></script>
+        <script src="../navigator/navigator.js"></script>
     </main>
     <!-- * Main Container -->
 

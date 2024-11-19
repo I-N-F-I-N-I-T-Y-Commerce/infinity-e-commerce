@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2024 at 09:12 AM
+-- Generation Time: Nov 18, 2024 at 04:28 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,12 +39,8 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`account_id`, `username`, `user_password`, `user_email`) VALUES
-(2, 'wilson', '$2y$10$an1Y/bbisydduoprgbKYqO9IMgykg9IanVskvlIk5o3LcwYVoSHk.', 'wilsonesmabe029'),
-(4, 'haimonmon', '$2y$10$M38DfSWDabJ3N7RrEmftC.FfMGYVKinPWM.Wela9r4l1ImR6oEgd.', 'vincerepo'),
-(6, 'laroro', '$2y$10$iqOdQsJJgQoxqoEYtK0NwuZoGcx/2qaEAmrMRsGK4yQJIY5SLy2Ym', 'vinceowo'),
-(7, 'gargamel', '$2y$10$VF/9p6paxrFSR9DaITAB0elErFsbE/EyBvdhKO8b7JLZNO6Oykru6', 'gargamel789@gmail.com'),
-(8, 'Paimon', '$2y$10$M5zhC9IX8/Js5coBUbVV/.Dc5vBTtZA3Redd06K7RaHwSQ9pM3po.', 'paimon@gmail.com'),
-(9, 'jhondoe', '$2y$10$s12Eux9nqmGmRwyt6noAMekiV7gBS30/XbajOrKBJgHOtMYLn656S', 'johndoe@gmail.com');
+(10, 'bruhmoments', '$2y$10$nC8iHCU/rb5h0BaGPe/gh.Q7nnCZbzUHuhw8FLX6nf2HDqht/oCFG', 'bruhmoments@gmail.com'),
+(11, 'laroro', '$2y$10$xjecOwfVZPE6A5gq046zCulRs6vc8GyLZHXczkUyOjCj9JLih0PCK', 'laroro@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -142,7 +138,7 @@ INSERT INTO `product` (`product_id`, `shoe_name`, `shoe_image`, `shoe_brand`, `s
 (8, 'Nike lever du soleil', 'https://res.cloudinary.com/dhisbk3b2/image/upload/v1729165253/Group_71_t7kudm.png', 'Nike', 'OWENOKWDNKO', 23, 'Kids', 1500.00, 0, 1, '2024-10-31', '2024-10-17'),
 (9, 'Fall Florals', 'https://res.cloudinary.com/dhisbk3b2/image/upload/v1729165252/Group_68_vtazz6.png', 'Converse', ' shoes are the perfect blend of seasonal charm and comfort for your little one. Designed with a cozy autumn feel, these shoes feature playful floral patterns in warm, earthy tones that capture the essence of fall. Soft, cushi', 55, 'Kids', 1156.00, 1, 0, '2024-11-07', '2024-10-17'),
 (10, 'Converse Darkify', 'https://res.cloudinary.com/dhisbk3b2/image/upload/v1729165252/Group_70_ijyzmt.png', 'Converse', 'bring an edgy yet elegant twist to the classic sneaker style. Featuring striking butterfly motifs set against a deep, moody background, these shoes offer a bold statement for those who love to blend nature with a modern aesth', 15, 'Kids', 1600.00, 1, 0, '2024-10-31', '2024-10-17'),
-(12, 'Suede Sneakers', 'https://res.cloudinary.com/dhisbk3b2/image/upload/v1729165252/Group_72_bfexvl.png', 'Infinity', 'The Suede Sneakers combine timeless style with unbeatable comfort, offering a versatile footwear option that can be dressed up or down. Crafted from premium, soft suede, these sneakers boast a sleek and refined look while mai', 55, 'Kids', 890.00, 1, 0, '2025-02-14', '2024-10-17'),
+(12, 'Suede Sneakers', 'https://res.cloudinary.com/dhisbk3b2/image/upload/v1729165252/Group_72_bfexvl.png', 'Infinity', 'The Suede Sneakers combine timeless style with unbeatable comfort, offering a versatile footwear option that can be dressed up or down. Crafted from premium, soft suede, these sneakers boast a sleek and refined look while mai', 55, 'Kids', 890.00, 1, 0, '2025-02-14', '2024-11-18'),
 (13, 'The Berry Good Days', 'https://res.cloudinary.com/dhisbk3b2/image/upload/v1729165252/Group_69_vuunkw.png', 'Converse', 'a playful and vibrant addition to any wardrobe, designed to bring a pop of fun and color to your every step. With a refreshing berry-inspired palette of rich reds, purples, and pinks, these shoes radiate cheerfulness and posi', 25, 'Kids', 1790.00, 0, 0, '2026-01-17', '2024-09-11'),
 (14, 'Party Polka\'s', 'https://res.cloudinary.com/dhisbk3b2/image/upload/v1729165252/Group_66_bey4as.png', 'Converse', ', playful polka dot patterns in vibrant colors, these shoes exude a lively and cheerful vibe that\'s perfect for parties, gatherings, or casual outings with friends. The cushioned insoles provide comfort for hours of dancing o', 10, 'Kids', 1323.00, 1, 0, '2024-10-31', '2024-10-17'),
 (15, 'Mr Croaky', 'https://res.cloudinary.com/dhisbk3b2/image/upload/v1729165252/Group_65_xtab5s.png', 'Infinity', 'shoes are a quirky and fun footwear choice, perfect for those who love to stand out with playful style. Inspired by the charm of a friendly frog, these shoes feature vibrant green tones and subtle amphibian details, making th', 8, 'Kids', 1670.00, 0, 1, '2024-11-05', '2024-10-17'),
@@ -167,8 +163,7 @@ CREATE TABLE `review` (
   `user_id` int(6) NOT NULL,
   `product_id` int(6) NOT NULL,
   `rating` int(1) NOT NULL,
-  `review_body` varchar(255) NOT NULL,
-  `review_date` date NOT NULL
+  `review_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -182,10 +177,17 @@ CREATE TABLE `user` (
   `account_id` int(6) NOT NULL,
   `first_name` varchar(25) NOT NULL,
   `last_name` varchar(25) NOT NULL,
-  `profile_pic` varchar(75) DEFAULT NULL,
   `contact_number` varchar(20) NOT NULL,
   `address` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `account_id`, `first_name`, `last_name`, `contact_number`, `address`) VALUES
+(2, 10, 'vijay', 'paimon', '09215373499', 'New York Pampanga'),
+(3, 11, 'Flabiki', 'Dimo', '09213898884', 'Masagana pandi, Bulacan');
 
 -- --------------------------------------------------------
 
@@ -199,6 +201,31 @@ CREATE TABLE `wishlist` (
   `product_id` int(6) NOT NULL,
   `liked` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`wishlist_id`, `user_id`, `product_id`, `liked`) VALUES
+(5, 10, 9, 1),
+(6, 10, 8, 0),
+(7, 10, 10, 0),
+(8, 11, 9, 0),
+(9, 11, 8, 1),
+(10, 10, 12, 1),
+(11, 10, 13, 0),
+(12, 10, 14, 1),
+(13, 10, 4, 1),
+(14, 11, 16, 1),
+(15, 11, 3, 1),
+(16, 10, 16, 0),
+(17, 10, 15, 1),
+(18, 10, 19, 1),
+(19, 10, 1, 0),
+(20, 11, 18, 0),
+(21, 11, 20, 1),
+(22, 11, 19, 1),
+(23, 11, 13, 0);
 
 --
 -- Indexes for dumped tables
@@ -220,7 +247,9 @@ ALTER TABLE `admin`
 -- Indexes for table `cart`
 --
 ALTER TABLE `cart`
-  ADD PRIMARY KEY (`cart_id`);
+  ADD PRIMARY KEY (`cart_id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `inbox`
@@ -246,7 +275,9 @@ ALTER TABLE `product`
 -- Indexes for table `review`
 --
 ALTER TABLE `review`
-  ADD PRIMARY KEY (`review_id`);
+  ADD PRIMARY KEY (`review_id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `user`
@@ -271,7 +302,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `account_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -313,17 +344,24 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `wishlist_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `account` (`account_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `inbox`
@@ -338,6 +376,13 @@ ALTER TABLE `order`
   ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `review`
+--
+ALTER TABLE `review`
+  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `account` (`account_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
@@ -347,7 +392,7 @@ ALTER TABLE `user`
 -- Constraints for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `account` (`account_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
