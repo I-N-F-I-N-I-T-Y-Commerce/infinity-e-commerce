@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2024 at 04:28 PM
+-- Generation Time: Nov 19, 2024 at 12:55 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -166,6 +166,36 @@ CREATE TABLE `review` (
   `review_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`review_id`, `user_id`, `product_id`, `rating`, `review_date`) VALUES
+(1, 11, 14, 4, '2024-11-19 01:55:37'),
+(2, 11, 20, 3, '2024-11-19 01:56:31'),
+(3, 11, 6, 4, '2024-11-19 01:56:51'),
+(4, 11, 17, 1, '2024-11-19 02:35:09'),
+(5, 11, 10, 2, '2024-11-19 02:00:43'),
+(6, 11, 22, 1, '2024-11-19 02:01:57'),
+(7, 11, 19, 5, '2024-11-19 02:07:09'),
+(8, 11, 5, 4, '2024-11-19 02:10:03'),
+(9, 10, 17, 5, '2024-11-19 05:51:21'),
+(10, 11, 16, 4, '2024-11-19 03:07:39'),
+(11, 10, 21, 3, '2024-11-19 03:19:36'),
+(12, 10, 18, 4, '2024-11-19 04:36:42'),
+(13, 10, 8, 4, '2024-11-19 04:36:51'),
+(14, 10, 15, 5, '2024-11-19 04:36:56'),
+(15, 10, 12, 5, '2024-11-19 07:10:26'),
+(16, 10, 14, 5, '2024-11-19 04:37:04'),
+(17, 10, 22, 5, '2024-11-19 04:37:14'),
+(18, 10, 19, 4, '2024-11-19 04:37:30'),
+(19, 10, 9, 4, '2024-11-19 05:51:03'),
+(20, 10, 10, 5, '2024-11-19 04:37:44'),
+(21, 10, 13, 4, '2024-11-19 07:10:48'),
+(22, 10, 2, 4, '2024-11-19 07:34:30'),
+(23, 10, 7, 5, '2024-11-19 07:34:41'),
+(24, 10, 1, 3, '2024-11-19 07:34:57');
+
 -- --------------------------------------------------------
 
 --
@@ -225,7 +255,15 @@ INSERT INTO `wishlist` (`wishlist_id`, `user_id`, `product_id`, `liked`) VALUES
 (20, 11, 18, 0),
 (21, 11, 20, 1),
 (22, 11, 19, 1),
-(23, 11, 13, 0);
+(23, 11, 13, 0),
+(24, 11, 24, 1),
+(25, 10, 24, 1),
+(26, 10, 18, 1),
+(27, 11, 21, 1),
+(28, 11, 17, 1),
+(29, 11, 4, 1),
+(30, 11, 5, 1),
+(31, 10, 7, 0);
 
 --
 -- Indexes for dumped tables
@@ -314,7 +352,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `inbox`
@@ -338,7 +376,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `review_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -350,7 +388,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `wishlist_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables

@@ -250,6 +250,7 @@ if (isset($_SESSION['account_id'])) {
         </div>
         <script src="../../components/like/like.js"></script>
         <script src="../../navigator/navigator.js"></script>
+        <script src="../../components/add-to-cart/cart.js"></script>
     </main>
     <!-- * Main Container -->
 
