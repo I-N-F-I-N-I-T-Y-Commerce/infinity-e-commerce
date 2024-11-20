@@ -19,14 +19,14 @@ const popper = () => {
         });
     });
 
-    document.addEventListener('click', (e) => {
-        if (!popper.contains(e.target)) {
-            if (popper.classList.contains('visible')) {
-                popper.classList.remove('visible');
-                popper.classList.add('not-visible');
-            }
-        }
-    });
+    // document.addEventListener('click', (e) => {
+    //     if (!popper.contains(e.target)) {
+    //         if (popper.classList.contains('visible')) {
+    //             popper.classList.remove('visible');
+    //             popper.classList.add('not-visible');
+    //         }
+    //     }
+    // });
 };
 
 popper();

@@ -123,24 +123,20 @@
                         <img src="../public/downward-arrow.png" alt="">
                     </div>
                     <div class="quanty-get">
-                        <span id="num-get">1</span>
+                        <span id="num-get" data-product-id="'. $result["product_id"] .'">1</span>
                     </div>
                     <div class="container-decrement">
                         <img src="../public/downward-arrow.png" alt="">
                     </div>
                     
                     <div class="quantity">
-                        <span>'. $result["quantity"] .'</span>
+                        <span id="product-quantity">'. $result["quantity"] .'</span>
                     </div>
                 </div>
 
                 <div class="buy-container">
-                    <div class="buy-item">
-                        <span>Buy Item</span>
-                    </div>
-                    <div class="add-to-cart">
-                        <img src="../public/shopping-bag (1).png" class="cart-button" alt="">
-                    </div>
+                    '. buyItemSignInDetection() .'
+                    '. addToCartSignInDetection() .'
                     <div class="add-to-wishlist">
                         <img src="../public/heart ('. $like_status .').png" id="wishlist" class="add-to-favorites" data-id="'. $result["product_id"] .'" alt="">
                     </div>
@@ -150,6 +146,8 @@
     }
 
     function rightSideContainer($conn, $result) {
+        $rating = getProductRating($conn, $result);
+
         return '
             <div class="right-side-container">
                 <span id="product-brand">'. $result["shoe_brand"] .'</span>
@@ -160,7 +158,7 @@
                     <img src="../public/star.png" alt="" data-id="3" class="star3 ">
                     <img src="../public/star.png" alt="" data-id="4" class="star4 ">
                     <img src="../public/star (3).png" alt="" data-id="5" class="star5 ">
-                    <span class="num-review">0 Reviews</span>
+                    <span class="num-review">'. $rating['num_ratings'] .' Reviews</span>
                 </div>
                 <span id="product-price"> ₱ '. productPrice($result) .'</span>
                 <span id="product-descri">Product Description</span>
@@ -170,7 +168,45 @@
                 </div>
             </div>
         ';
+    };
+
+    function buyItemSignInDetection() {
+        if (isset($_SESSION['account_id'])) {
+            return '
+                <div class="buy-item">
+                    <span id="buy-item-button" class="buy-item">Buy Item</span>
+                </div>
+            ';
+        }
+
+        return '
+            <a href="../authentication/account-sign-in.php">
+                <div class="buy-item">
+                    <span>Buy Item</span>
+                </div>
+            </a>
+        ';
     }
+
+    function addToCartSignInDetection() {
+        if (isset($_SESSION['account_id'])) {
+            return '
+                <div class="add-to-cart">
+                    <img src="../public/shopping-bag (1).png"  id="add-to-cart-btn" alt="">
+                </div>
+            ';
+        }
+
+        return '
+        <a href="../authentication/account-sign-in.php">
+            <div class="add-to-cart">
+                <img src="../public/shopping-bag (1).png" alt="">
+            </div>
+        </a>
+        ';
+    }
+
+
 
     function productPrice($result) {
         $original_price = $result["shoe_price"];
@@ -360,4 +396,70 @@
             ';
     }
 
+    /**
+     * Render Product
+     */
+    function renderCart($conn, $user_id) {    
+        $cart_products = getCartProduct($conn, $user_id);
+
+        if (!empty($cart_products)) {
+            foreach ($cart_products as $product) {
+                echo cartProduct($conn, $product);
+            }
+        } else {
+            echo "<p> No Product</p>";
+        }
+    }
+
+     /**
+     * Why get hard in a single time if you can get the item 🛒🦖✨
+     */
+    function getProductData($conn, $product_id) {
+        $product_data = $conn->prepare("
+            SELECT * FROM product
+            WHERE product_id = ?
+        ");
+
+        $product_data->bind_param("i",$product_id);
+        $product_data->execute();
+        $product_result = $product_data->get_result();
+        $product = $product_result->fetch_assoc();
+
+        return $product;
+    }
+    
+    function cartProduct($conn, $cart_product) {
+        $product_info = getProductData($conn, $cart_product['product_id']);
+      
+        return '
+           <div class="cart-item">
+                <div class="item-quantity">
+                    <button class="left">+</button>
+                    <span id="product-'. $cart_product['product_id'] .'-quantity">'. $cart_product['cart_qty'] .'</span>
+                    <button class="right">-</button>
+                </div>
+                <img src="'. $product_info['shoe_image'] .'" alt="Shoe Image">
+                <div class="item-details">
+                    <h3>'. $product_info['shoe_name'] .'</h3>
+                    <p>₱ '. $product_info['shoe_price'] .'</p>
+                </div>
+            </div>
+        ';
+    }
+
+    function getCartProduct($conn, $user_id) {
+        $cart_product = $conn->prepare("
+            SELECT * FROM cart
+            WHERE user_id = ?
+        ");
+
+        $cart_product->bind_param("i", $user_id);
+        $cart_product->execute();
+
+        $result = $cart_product->get_result();
+        $products = $result->fetch_all(MYSQLI_ASSOC);
+
+        $cart_product->close();
+        return $products;
+    }
 ?>

@@ -119,9 +119,11 @@ if (isset($_GET['product_id'])) {
                                 </button>
                             </a>
 
-                            <button type=\"button\" class=\"cart-button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
-                                <img src=\"../public/market-1@2x.png\" alt=\"Cart icon\">
-                            </button>
+                            <a href=\"../authentication/account-sign-in.php\">
+                                <button type=\"button\" id=\"cart-btn\" style=\"background: none; border: none;\"> 
+                                    <img src=\"../public/market-1@2x.png\" alt=\"Cart icon\">
+                                </button>
+                            </a>
                             ";
                         }
                         ?>
@@ -136,84 +138,9 @@ if (isset($_GET['product_id'])) {
                         </div>
                         <div class="cart-items">
                             <!-- Cart Item 1 -->
-                            <div class="cart-item">
-                                <div class="item-quantity">
-                                    <button class="left">+</button>
-                                    <span>2</span>
-                                    <button class="right">-</button>
-                                </div>
-                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
-                                <div class="item-details">
-                                    <h3>The Berry Good Days</h3>
-                                    <p>₱ 2,978</p>
-                                </div>
-                            </div>
-                            <!-- Cart Item 2 -->
-                            <div class="cart-item">
-                                <div class="item-quantity">
-                                    <button class="left">+</button>
-                                    <span>3</span>
-                                    <button class="right">-</button>
-                                </div>
-                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
-                                <div class="item-details">
-                                    <h3>The Berry Good Days</h3>
-                                    <p>₱ 2,978</p>
-                                </div>
-                            </div>
-                            <!-- Cart Item 3 -->
-                            <div class="cart-item">
-                                <div class="item-quantity">
-                                    <button class="left">+</button>
-                                    <span>4</span>
-                                    <button class="right">-</button>
-                                </div>
-                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
-                                <div class="item-details">
-                                    <h3>The Berry Good Days</h3>
-                                    <p>₱ 2,978</p>
-                                </div>
-                            </div>
-
-                            <div class="cart-item">
-                                <div class="item-quantity">
-                                    <button class="left">+</button>
-                                    <span>2</span>
-                                    <button class="right">-</button>
-                                </div>
-                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
-                                <div class="item-details">
-                                    <h3>The Berry Good Days</h3>
-                                    <p>₱ 2,978</p>
-                                </div>
-                            </div>
-
-                            <div class="cart-item">
-                                <div class="item-quantity">
-                                    <button class="left">+</button>
-                                    <span>2</span>
-                                    <button class="right">-</button>
-                                </div>
-                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
-                                <div class="item-details">
-                                    <h3>The Berry Good Days</h3>
-                                    <p>₱ 2,978</p>
-                                </div>
-                            </div>
-
-                            <div class="cart-item">
-                                <div class="item-quantity">
-                                    <button class="left">+</button>
-                                    <span>2</span>
-                                    <button class="right">-</button>
-                                </div>
-                                <img src="https://via.placeholder.com/80" alt="Shoe Image">
-                                <div class="item-details">
-                                    <h3>The Berry Good Days</h3>
-                                    <p>₱ 2,978</p>
-                                </div>
-                            </div>
-
+                            <?php
+                                renderCart($conn, $account_id);
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -281,6 +208,7 @@ if (isset($_GET['product_id'])) {
         <script src="../components/like/like.js"></script>
         <script src="../components/rating/rating.js"></script>
         <script src="../navigator/navigator.js"></script>
+        <script src="../product-overview/product-overview.js"></script>
     </main>
 
 
