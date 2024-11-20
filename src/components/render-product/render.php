@@ -432,16 +432,19 @@
         $product_info = getProductData($conn, $cart_product['product_id']);
       
         return '
-           <div class="cart-item">
+           <div class="cart-item" data-product-id="' . $cart_product['product_id'] . '" data-product-stock="'. $product_info['quantity'] .'">
                 <div class="item-quantity">
-                    <button class="left">+</button>
+                    <button class="left" id="add-product-'. $product_info['product_id'] .'">+</button>
                     <span id="product-'. $cart_product['product_id'] .'-quantity">'. $cart_product['cart_qty'] .'</span>
-                    <button class="right">-</button>
+                    <button class="right" id="subtract-product-'. $product_info['product_id'] .'">-</button>
                 </div>
                 <img src="'. $product_info['shoe_image'] .'" alt="Shoe Image">
                 <div class="item-details">
                     <h3>'. $product_info['shoe_name'] .'</h3>
                     <p>₱ '. $product_info['shoe_price'] .'</p>
+                </div>
+                <div class="trash-btn-container"  data-product-id="'. $cart_product['product_id'] .'">
+                    <span alt="" data-product-id="'. $cart_product['product_id'] .'" class="trash-button">X</span>
                 </div>
             </div>
         ';
@@ -461,5 +464,50 @@
 
         $cart_product->close();
         return $products;
+    }
+
+    function renderTotalPrice($conn, $user_id) {
+        $total_price = getTotalPrice($conn, $user_id);
+
+        return '
+            <h2 id="cart-total-price">Total Price: ₱ ' . number_format($total_price, 2) . ' </h2>
+            <div class="block">
+                <span>Checkout</span>
+            </div>
+        ';
+    }
+
+    function getTotalPrice($conn, $user_id) {
+        $total_price = 0;
+
+        $cart_query = "SELECT product_id, cart_qty FROM cart WHERE user_id = ?";
+        $cart_stmt = $conn->prepare($cart_query);
+        $cart_stmt->bind_param("i", $user_id);
+        $cart_stmt->execute();
+        $cart_result = $cart_stmt->get_result();
+    
+        if ($cart_result && $cart_result->num_rows > 0) {
+            while ($cart_row = $cart_result->fetch_assoc()) {
+                $product_id = $cart_row['product_id'];
+                $cart_qty = $cart_row['cart_qty'];
+    
+               
+                $product_query = "SELECT shoe_price FROM product WHERE product_id = ?";
+                $stmt = $conn->prepare($product_query);
+                $stmt->bind_param("i", $product_id);
+                $stmt->execute();
+                $product_result = $stmt->get_result();
+    
+                if ($product_result && $product_result->num_rows > 0) {
+                    $product_row = $product_result->fetch_assoc();
+                    $price = $product_row['shoe_price'];
+    
+                    $total_price += $price * $cart_qty;
+                }
+                $stmt->close();
+            }
+        }
+    
+        return $total_price;
     }
 ?>

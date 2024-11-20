@@ -91,11 +91,27 @@
             $message = addProduct($conn, $user_id, $quantity, $product_data);
         }
 
+        $item_exist_cart1 = $conn->prepare("
+        SELECT * FROM cart
+        WHERE user_id = ? AND product_id = ?
+        ");
+
+        $item_exist_cart1->bind_param("ii", $user_id, $product_id);
+        $item_exist_cart1->execute();
+        $cart_item_result = $item_exist_cart1->get_result();
+        $cart_item1 = $cart_item_result->fetch_array();
+
+        $product_quantity = isset($cart_item1['cart_qty']) ? $cart_item1['cart_qty'] : 0;
+
         echo json_encode([
             "success" => true,
             "message" => "Successfully {$message}",
             "data" => [
-                "success"
+                "product_image" => $product_data['shoe_image'],
+                "product_name"=> $product_data['shoe_name'],
+                "product_price"=> $product_data['shoe_price'],
+                "product_quantity" => $product_quantity,
+                "updated_total_price" => number_format(kuninNalangYungPrice($conn, $user_id),2)
             ]
         ]);
         exit();
@@ -196,5 +212,39 @@
         ");
         $delete_query->bind_param("ii", $user_id, $product_id);
         $delete_query->execute();
+    }
+
+    function kuninNalangYungPrice($conn, $user_id) {
+        $total_price = 0;
+
+        $cart_query = "SELECT product_id, cart_qty FROM cart WHERE user_id = ?";
+        $cart_stmt = $conn->prepare($cart_query);
+        $cart_stmt->bind_param("i", $user_id);
+        $cart_stmt->execute();
+        $cart_result = $cart_stmt->get_result();
+    
+        if ($cart_result && $cart_result->num_rows > 0) {
+            while ($cart_row = $cart_result->fetch_assoc()) {
+                $product_id = $cart_row['product_id'];
+                $cart_qty = $cart_row['cart_qty'];
+    
+               
+                $product_query = "SELECT shoe_price FROM product WHERE product_id = ?";
+                $stmt = $conn->prepare($product_query);
+                $stmt->bind_param("i", $product_id);
+                $stmt->execute();
+                $product_result = $stmt->get_result();
+    
+                if ($product_result && $product_result->num_rows > 0) {
+                    $product_row = $product_result->fetch_assoc();
+                    $price = $product_row['shoe_price'];
+    
+                    $total_price += $price * $cart_qty;
+                }
+                $stmt->close();
+            }
+        }
+    
+        return $total_price;
     }
 ?>

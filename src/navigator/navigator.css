@@ -232,9 +232,14 @@ h2 {
 
 
 .block{
-    width: 129px;
+    cursor: pointer;
+    width: 175px;
     border-left: 2px solid #F6BC72;
+    border-right: 2px solid #F6BC72;
     background-color: #040410;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cart-items {
@@ -249,6 +254,7 @@ h2 {
 }
 
 .cart-item {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -329,4 +335,19 @@ h2 {
     scrollbar-width: thin;
     scrollbar-color: #F6BC72 #1E1E23; 
     cursor: pointer;
+}
+
+.trash-button {
+    position: absolute;
+    right: 15px;
+    top: 50px;
+    border: 2.5px solid #F1A54C;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-family: var(--font-boston-light);
+    color: #F1A54C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

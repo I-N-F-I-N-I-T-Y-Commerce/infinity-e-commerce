@@ -130,8 +130,9 @@ if (isset($_SESSION['account_id'])) {
                 <div class="popper not-visible">
                     <div class="cart-container">
                         <div class="cart-header">
-                            <h2>Total Price: ₱ 768,324.00 </h2>
-                            <div class="block"></div>
+                            <?php
+                                echo renderTotalPrice($conn, $account_id);
+                            ?>
                         </div>
                         <div class="cart-items">
                             <!-- Cart Item 1 -->
